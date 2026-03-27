@@ -16,31 +16,31 @@ export const SectionContactos = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent mb-6 block">Contactos</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-6 block">Contactos</span>
               <h2 className="font-serif text-5xl md:text-7xl leading-[0.9] tracking-tighter mb-16">
-                Vamos <br /> <span className="text-transparent stroke-ink stroke-1" style={{ WebkitTextStroke: '1.5px var(--ink-color)' }}>Reunir?</span>
+                Vamos <br /> Reunir?
               </h2>
 
               <div className="space-y-10">
-                <div className="flex items-center gap-5">
-                  <Mail className="w-6 h-6 opacity-20 flex-shrink-0" />
+                <div className="flex items-start gap-5">
+                  <Mail className="w-6 h-6 opacity-20 flex-shrink-0 mt-1" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Email</span>
                     <Magnetic strength={0.1}>
-                      <a href="mailto:info@martasantos.pt" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
-                        info@martasantos.pt
+                      <a href="mailto:info@martasantos.pt" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block leading-relaxed">
+                        info@<br />martasantos.pt
                       </a>
                     </Magnetic>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-5">
-                  <Phone className="w-6 h-6 opacity-20 flex-shrink-0" />
+                <div className="flex items-start gap-5">
+                  <Phone className="w-6 h-6 opacity-20 flex-shrink-0 mt-1" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Telefone</span>
                     <Magnetic strength={0.1}>
-                      <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
-                        +351 912 345 678
+                      <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block leading-relaxed">
+                        +351 912<br />345 678
                       </a>
                     </Magnetic>
                   </div>

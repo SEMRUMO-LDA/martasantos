@@ -54,13 +54,13 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
       {/* Centered nav links (desktop) */}
       <div className="flex justify-center px-8 py-6">
         <div
-          className="hidden md:flex items-center gap-1 p-2 pointer-events-auto relative rounded-full"
+          className="hidden md:flex items-center gap-0.5 px-1.5 py-1.5 pointer-events-auto relative rounded-full"
           style={{
-            background: 'rgba(255, 255, 255, 0.08)',
-            backdropFilter: 'blur(40px) saturate(200%)',
-            WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.1)',
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(60px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
           }}
         >
           {links.map((link, index) => (
@@ -69,11 +69,11 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 onClick={() => onSectionChange(index)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="relative px-6 py-2.5 text-[11px] uppercase tracking-[0.15em] font-bold cursor-pointer z-10 transition-all duration-500"
+                className="relative px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-bold cursor-pointer z-10 transition-all duration-300"
                 style={{
                   color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                  opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.9 : 0.6),
-                  textShadow: useWhiteText ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 2px rgba(255, 255, 255, 0.5)'
+                  opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.85 : 0.5),
+                  textShadow: useWhiteText ? '0 1px 2px rgba(0, 0, 0, 0.2)' : '0 1px 1px rgba(255, 255, 255, 0.4)'
                 }}
               >
                 {activeSection === index && (
@@ -81,11 +81,11 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                     layoutId="active-pill"
                     className="absolute inset-0 rounded-full z-[-1]"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.4)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+                      background: 'rgba(255, 255, 255, 0.25)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      boxShadow: '0 2px 6px rgba(0, 0, 0, 0.06), inset 0 1px 0px rgba(255, 255, 255, 0.4)',
                     }}
-                    transition={{ type: 'spring', bounce: 0.15, duration: 0.6 }}
+                    transition={{ type: 'spring', bounce: 0.12, duration: 0.5 }}
                   />
                 )}
                 <span className="relative">{link}</span>
@@ -97,30 +97,30 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
 
       {/* Hamburger island — always visible, top-right */}
       <div className="fixed top-6 right-8 pointer-events-auto">
-        <Magnetic strength={0.2}>
+        <Magnetic strength={0.15}>
           <button
             onClick={onMenuToggle}
-            className="w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1 group"
+            className="w-11 h-11 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
-              backdropFilter: 'blur(40px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.1)',
+              background: 'rgba(255, 255, 255, 0.06)',
+              backdropFilter: 'blur(60px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              boxShadow: '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
             }}
           >
             <span
-              className="block w-4 h-[1px] transition-all duration-500 group-hover:w-5 group-hover:bg-accent group-hover:opacity-100"
+              className="block w-4 h-[1px] transition-all duration-300 group-hover:w-5 group-hover:bg-accent"
               style={{
                 backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                opacity: 0.8
+                opacity: 0.7
               }}
             />
             <span
-              className="block w-4 h-[1px] transition-all duration-500 group-hover:w-3 group-hover:bg-accent group-hover:opacity-100"
+              className="block w-4 h-[1px] transition-all duration-300 group-hover:w-3 group-hover:bg-accent"
               style={{
                 backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                opacity: 0.8
+                opacity: 0.7
               }}
             />
           </button>
