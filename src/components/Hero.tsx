@@ -39,7 +39,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 relative"
         >
-          <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-xl relative">
+          <div className="aspect-[3/4] overflow-hidden rounded-sm shadow-xl relative">
             <Magnetic strength={0.2}>
               <button
                 onClick={handleNextImage}
