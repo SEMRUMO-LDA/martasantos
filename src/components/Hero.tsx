@@ -68,26 +68,26 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
         </motion.div>
 
         {/* Center/Right Content */}
-        <div className="lg:col-span-7 flex flex-col gap-12 pl-0 lg:pl-12">
+        <div className="lg:col-span-7 flex flex-col gap-16 pl-0 lg:pl-12">
           <motion.div
             style={{ y: y2 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
           >
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Apresentação</span>
-            <h1 className="font-serif text-5xl md:text-7xl tracking-tighter mb-8">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-6 block">Apresentação</span>
+            <h1 className="font-serif text-5xl md:text-7xl tracking-tighter mb-12">
               Atelier <br />
               Arquitectura
             </h1>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.5 }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-10"
             >
               <p className="text-sm text-muted leading-relaxed font-light max-w-sm">
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
