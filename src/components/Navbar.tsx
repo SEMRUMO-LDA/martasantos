@@ -27,7 +27,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Logo no canto superior esquerdo */}
-      <div className="fixed top-6 left-8 md:left-12 pointer-events-auto flex items-center" style={{ height: '60px' }}>
+      <div className="fixed top-6 left-8 md:left-12 pointer-events-auto flex items-center">
         <Magnetic strength={0.06}>
           <motion.button
             onClick={() => onSectionChange(0)}
@@ -53,9 +53,9 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
       </div>
 
       {/* Centered nav links (desktop) */}
-      <div className="flex justify-center px-8 py-6">
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 pointer-events-none">
         <div
-          className="hidden md:flex items-center gap-0.5 px-1.5 py-1.5 pointer-events-auto relative rounded-full"
+          className="hidden md:flex items-center gap-0.5 px-1.5 py-1.5 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
           style={{
             background: useWhiteText
               ? 'rgba(255, 255, 255, 0.08)'
@@ -76,7 +76,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 onClick={() => onSectionChange(index)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="relative px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-bold cursor-pointer z-10 transition-all duration-300"
+                className="relative px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-bold cursor-pointer z-10 transition-all duration-700 ease-out"
                 style={{
                   color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
                   opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.85 : 0.5),
@@ -113,7 +113,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
         <Magnetic strength={0.15}>
           <button
             onClick={onMenuToggle}
-            className="w-11 h-11 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-300"
+            className="w-11 h-11 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-700 ease-out"
             style={{
               background: useWhiteText
                 ? 'rgba(255, 255, 255, 0.08)'
@@ -129,14 +129,14 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
             }}
           >
             <span
-              className="block w-4 h-[1px] transition-all duration-300 group-hover:w-5 group-hover:bg-accent"
+              className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-5 group-hover:bg-accent"
               style={{
                 backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
                 opacity: 0.7
               }}
             />
             <span
-              className="block w-4 h-[1px] transition-all duration-300 group-hover:w-3 group-hover:bg-accent"
+              className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-3 group-hover:bg-accent"
               style={{
                 backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
                 opacity: 0.7
