@@ -9,28 +9,28 @@ export const Section03 = () => {
       title: "Casa na Comporta",
       category: "Residencial",
       year: "2024",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1448630360428-65ff2c191c79?q=80&w=1000&auto=format&fit=crop",
       size: "large"
     },
     {
       title: "Apartamento Chiado",
       category: "Renovação",
       year: "2023",
-      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=1000&auto=format&fit=crop",
       size: "small"
     },
     {
       title: "Escritório LX",
       category: "Comercial",
       year: "2024",
-      image: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
       size: "medium"
     },
     {
       title: "Villa Algarve",
       category: "Residencial",
       year: "2022",
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1621293954908-9271256abe97?q=80&w=1000&auto=format&fit=crop",
       size: "medium"
     }
   ];
