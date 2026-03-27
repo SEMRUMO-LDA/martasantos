@@ -88,10 +88,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 {activeSection === index && (
                   <motion.span
                     layoutId="active-underline"
-                    className="absolute bottom-0 left-0 right-0 h-[2px]"
-                    style={{
-                      backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                    }}
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
                     transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
                   />
                 )}
