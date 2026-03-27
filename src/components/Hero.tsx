@@ -49,7 +49,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform" />
             </button>
           </Magnetic>
-          <div className="aspect-[3/2] overflow-hidden rounded-sm shadow-xl relative">
+          <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-xl relative">
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}
