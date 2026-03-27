@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@theme {
+  --font-serif: "Hanken Grotesk", sans-serif;
+  --font-sans: "Nunito Sans", sans-serif;
+  
+  --color-bg: var(--bg-color, #ffffff);
+  --color-ink: var(--ink-color, #000000);
+  --color-muted: var(--muted-color, #666666);
+  
+  --color-accent: var(--accent-color, #75b368);
+  --color-accent-light: var(--accent-light-color, #f2ffee);
+  --color-accent-muted: var(--accent-muted-color, #91a77a);
+  --color-accent-dark: var(--accent-dark-color, #28301e);
+}
+
+:root {
+  /* Morning (Default) */
+  --bg-color: #ffffff;
+  --ink-color: #000000;
+  --muted-color: #666666;
+  --accent-color: #75b368;
+  --accent-light-color: #f2ffee;
+  --accent-muted-color: #91a77a;
+  --accent-dark-color: #28301e;
+}
+
+.theme-afternoon {
+  /* Afternoon - Golden Hour */
+  --bg-color: #fffaf0;
+  --ink-color: #2d241e;
+  --muted-color: #8b735b;
+  --accent-color: #d4a373;
+  --accent-light-color: #faedcd;
+  --accent-muted-color: #ccd5ae;
+  --accent-dark-color: #432818;
+}
+
+.theme-night {
+  /* Night - Twilight */
+  --bg-color: #0a0c10;
+  --ink-color: #e0e0e0;
+  --muted-color: #888888;
+  --accent-color: #4a6fa5;
+  --accent-light-color: #1a1e26;
+  --accent-muted-color: #3d4a5d;
+  --accent-dark-color: #c0c0c0;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-ink font-sans antialiased overflow-hidden transition-colors duration-1000;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(117, 179, 104, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(117, 179, 104, 0.5);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(117, 179, 104, 0.2) transparent;
+}
