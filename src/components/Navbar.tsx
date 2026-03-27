@@ -28,7 +28,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Logo no canto superior esquerdo - alinhado verticalmente com o menu */}
       <div className="fixed top-6 left-8 md:left-12 pointer-events-auto">
-        <div className="flex items-center h-[38px]">
+        <div className="flex items-center h-[44px]">
           <Magnetic strength={0.06}>
             <motion.button
               onClick={() => onSectionChange(0)}
@@ -57,7 +57,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
       {/* Centered nav links (desktop) */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 pointer-events-none">
         <div
-          className="hidden md:flex items-center gap-4 px-4 py-3 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
+          className="hidden md:flex items-center gap-4 px-4 py-2.5 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
           style={{
             background: useWhiteText
               ? 'rgba(255, 255, 255, 0.08)'
