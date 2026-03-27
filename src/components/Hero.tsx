@@ -80,8 +80,9 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               <span
                 className="text-transparent"
                 style={{
-                  WebkitTextStroke: '1.5px var(--ink-color)',
-                  paintOrder: 'stroke fill'
+                  WebkitTextStroke: '2px var(--ink-color)',
+                  paintOrder: 'stroke fill',
+                  textShadow: '0 0 1px var(--ink-color)'
                 }}
               >
                 Arquitectura
