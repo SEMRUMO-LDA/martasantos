@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Magnetic } from './Magnetic';
 
@@ -7,18 +7,31 @@ interface HeroProps {
   onCtaClick: () => void;
 }
 
+const GALLERY_IMAGES = [
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1000&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=1000&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop"
+];
+
 export const Hero = ({ onCtaClick }: HeroProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, -100]);
   const y2 = useTransform(scrollY, [0, 500], [0, 100]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
+  };
 
   return (
     <section className="h-screen pt-32 pb-16 px-8 md:px-24 flex flex-col justify-center relative bg-bg overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
         {/* Left Image with Parallax */}
-        <motion.div 
+        <motion.div
           style={{ y: y1, opacity }}
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -26,19 +39,28 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
           className="lg:col-span-5 relative"
         >
           <Magnetic strength={0.2}>
-            <div className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group">
+            <button
+              onClick={handleNextImage}
+              className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group z-20"
+            >
               <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform" />
-            </div>
+            </button>
           </Magnetic>
-          <div className="aspect-[3/2] overflow-hidden rounded-sm shadow-xl">
-            <motion.img 
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 1.5 }}
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" 
-              alt="Architecture Detail" 
-              className="w-full h-full object-cover grayscale"
-              referrerPolicy="no-referrer"
-            />
+          <div className="aspect-[3/2] overflow-hidden rounded-sm shadow-xl relative">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImageIndex}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.05 }}
+                src={GALLERY_IMAGES[currentImageIndex]}
+                alt={`Architecture Detail ${currentImageIndex + 1}`}
+                className="w-full h-full object-cover grayscale absolute inset-0"
+                referrerPolicy="no-referrer"
+              />
+            </AnimatePresence>
           </div>
         </motion.div>
 
