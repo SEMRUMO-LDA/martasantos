@@ -268,23 +268,30 @@ export default function App() {
       </div>
 
       {/* Nav arrows */}
-      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 transition-colors duration-500">
+      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 transition-colors duration-700">
         <div className="relative group/tooltip">
           <button
             onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
             disabled={activeSection === 0}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-out disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
             style={{
-              background: useWhiteControls ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
-              backdropFilter: 'blur(20px) saturate(180%)',
-              border: useWhiteControls ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(0, 0, 0, 0.15)',
-              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)',
+              background: useWhiteControls
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(255, 255, 255, 0.65)',
+              backdropFilter: 'blur(80px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(80px) saturate(200%)',
+              border: useWhiteControls
+                ? '1px solid rgba(255, 255, 255, 0.18)'
+                : '1px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: useWhiteControls
+                ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
+                : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
               color: useWhiteControls ? '#ffffff' : '#000000'
             }}
             title={activeSection > 0 ? `Anterior: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : ''}
             aria-label={activeSection > 0 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : 'Primeira página'}
           >
-            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
           </button>
           {activeSection > 0 && (
             <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
@@ -298,18 +305,25 @@ export default function App() {
           <button
             onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
             disabled={activeSection === SECTION_COUNT - 1}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-out disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
             style={{
-              background: useWhiteControls ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
-              backdropFilter: 'blur(20px) saturate(180%)',
-              border: useWhiteControls ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(0, 0, 0, 0.15)',
-              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)',
+              background: useWhiteControls
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(255, 255, 255, 0.65)',
+              backdropFilter: 'blur(80px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(80px) saturate(200%)',
+              border: useWhiteControls
+                ? '1px solid rgba(255, 255, 255, 0.18)'
+                : '1px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: useWhiteControls
+                ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
+                : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
               color: useWhiteControls ? '#ffffff' : '#000000'
             }}
             title={activeSection < SECTION_COUNT - 1 ? `Próximo: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : ''}
             aria-label={activeSection < SECTION_COUNT - 1 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : 'Última página'}
           >
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
           {activeSection < SECTION_COUNT - 1 && (
             <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
