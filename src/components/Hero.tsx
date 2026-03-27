@@ -132,27 +132,6 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
         </div>
       </div>
 
-      {/* Bottom Info */}
-      <div className="absolute bottom-12 left-8 md:left-24 flex items-center gap-6 text-[11px] uppercase tracking-[0.3em] font-bold text-muted">
-        <Magnetic strength={0.2}>
-          <button
-            onClick={() => onNavigate(4)}
-            className="cursor-pointer hover:text-accent transition-colors"
-          >
-            VAMOS REUNIR?
-          </button>
-        </Magnetic>
-        <span className="opacity-20">/</span>
-        <Magnetic strength={0.2}>
-          <button
-            onClick={() => onNavigate(2)}
-            className="cursor-pointer hover:text-accent transition-colors"
-          >
-            CONHECER PORTFÓLIO
-          </button>
-        </Magnetic>
-      </div>
-
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-accent-light/30 -z-0 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-50" />
     </section>
