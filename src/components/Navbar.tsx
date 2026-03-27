@@ -57,13 +57,17 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
         <div
           className="hidden md:flex items-center gap-0.5 px-1.5 py-1.5 pointer-events-auto relative rounded-full"
           style={{
-            background: useWhiteText ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
-            backdropFilter: 'blur(60px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(60px) saturate(180%)',
-            border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.12)',
+            background: useWhiteText
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(255, 255, 255, 0.65)',
+            backdropFilter: 'blur(80px) saturate(200%)',
+            WebkitBackdropFilter: 'blur(80px) saturate(200%)',
+            border: useWhiteText
+              ? '1px solid rgba(255, 255, 255, 0.18)'
+              : '1px solid rgba(255, 255, 255, 0.8)',
             boxShadow: useWhiteText
-              ? '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)'
-              : '0 4px 24px -4px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)',
+              ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
+              : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
           }}
         >
           {links.map((link, index) => (
@@ -84,11 +88,15 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                     layoutId="active-pill"
                     className="absolute inset-0 rounded-full z-[-1]"
                     style={{
-                      background: useWhiteText ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.15)',
-                      border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid rgba(0, 0, 0, 0.2)',
+                      background: useWhiteText
+                        ? 'rgba(255, 255, 255, 0.3)'
+                        : 'rgba(255, 255, 255, 0.85)',
+                      border: useWhiteText
+                        ? '1px solid rgba(255, 255, 255, 0.4)'
+                        : '1px solid rgba(255, 255, 255, 0.95)',
                       boxShadow: useWhiteText
-                        ? '0 2px 6px rgba(0, 0, 0, 0.06), inset 0 1px 0px rgba(255, 255, 255, 0.4)'
-                        : '0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0px rgba(255, 255, 255, 0.6)',
+                        ? '0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)'
+                        : '0 4px 12px rgba(31, 38, 135, 0.12), inset 0 1px 1px rgba(255, 255, 255, 1)',
                     }}
                     transition={{ type: 'spring', bounce: 0.12, duration: 0.5 }}
                   />
@@ -107,13 +115,17 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
             onClick={onMenuToggle}
             className="w-11 h-11 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-300"
             style={{
-              background: useWhiteText ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
-              backdropFilter: 'blur(60px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(60px) saturate(180%)',
-              border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.12)',
+              background: useWhiteText
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(255, 255, 255, 0.65)',
+              backdropFilter: 'blur(80px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(80px) saturate(200%)',
+              border: useWhiteText
+                ? '1px solid rgba(255, 255, 255, 0.18)'
+                : '1px solid rgba(255, 255, 255, 0.8)',
               boxShadow: useWhiteText
-                ? '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)'
-                : '0 4px 24px -4px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)',
+                ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
+                : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
             }}
           >
             <span
