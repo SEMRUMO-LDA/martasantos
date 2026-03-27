@@ -224,30 +224,44 @@ export default function App() {
         </AnimatePresence>
       </div>
 
-      {/* Progress bar */}
-      <div
-        className="fixed bottom-12 left-1/2 -translate-x-1/2 w-64 h-[1px] z-50 transition-colors duration-500"
-        style={{
-          backgroundColor: useWhiteControls ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-        }}
-      >
-        <motion.div
-          animate={{ width: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="h-full transition-colors duration-500"
-          style={{
-            backgroundColor: useWhiteControls ? '#ffffff' : '#000000'
-          }}
-        />
+      {/* Progress bar - Vertical no canto direito */}
+      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 flex items-center gap-6">
         <div
-          className="absolute -top-6 left-0 w-full flex justify-between text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
+          className="w-[1px] h-48 transition-colors duration-500 relative"
           style={{
-            color: useWhiteControls ? '#ffffff' : '#000000',
-            opacity: 0.4
+            backgroundColor: useWhiteControls ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
           }}
         >
-          <span>01</span>
-          <span>0{SECTION_COUNT}</span>
+          <motion.div
+            animate={{ height: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full transition-colors duration-500 absolute bottom-0"
+            style={{
+              backgroundColor: useWhiteControls ? '#ffffff' : '#000000'
+            }}
+          />
+          <div
+            className="absolute -left-8 top-0 flex flex-col gap-2 text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
+            style={{
+              color: useWhiteControls ? '#ffffff' : '#000000',
+              opacity: 0.4,
+              writingMode: 'vertical-rl',
+              transform: 'rotate(180deg)'
+            }}
+          >
+            <span>01</span>
+          </div>
+          <div
+            className="absolute -left-8 bottom-0 flex flex-col gap-2 text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
+            style={{
+              color: useWhiteControls ? '#ffffff' : '#000000',
+              opacity: 0.4,
+              writingMode: 'vertical-rl',
+              transform: 'rotate(180deg)'
+            }}
+          >
+            <span>0{SECTION_COUNT}</span>
+          </div>
         </div>
       </div>
 

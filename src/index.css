@@ -27,11 +27,11 @@
 
 .theme-afternoon {
   /* Afternoon - Golden Hour */
-  --bg-color: #fffaf0;
-  --ink-color: #2d241e;
-  --muted-color: #8b735b;
+  --bg-color: #ffffff;
+  --ink-color: #000000;
+  --muted-color: #666666;
   --accent-color: #d4a373;
-  --accent-light-color: #faedcd;
+  --accent-light-color: #f2ffee;
   --accent-muted-color: #ccd5ae;
   --accent-dark-color: #432818;
 }
