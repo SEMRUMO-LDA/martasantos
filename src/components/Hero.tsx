@@ -92,7 +92,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               <p className="text-sm text-muted leading-relaxed font-light max-w-sm">
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-4">
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(4)}
