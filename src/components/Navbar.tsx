@@ -57,7 +57,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
       {/* Centered nav links (desktop) */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 pointer-events-none">
         <div
-          className="hidden md:flex items-center gap-2 px-3 py-3 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
+          className="hidden md:flex items-center gap-4 px-4 py-3 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
           style={{
             background: useWhiteText
               ? 'rgba(255, 255, 255, 0.08)'
