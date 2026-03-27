@@ -74,8 +74,10 @@ export default function App() {
   // Mouse-wheel → page navigation with friction
   const wheelLockRef = useRef(false);
   const scrollAccumulatorRef = useRef(0);
+  const scrollResetTimerRef = useRef<NodeJS.Timeout | null>(null);
   const SCROLL_THRESHOLD = 100; // Precisa acumular 100px de scroll para mudar
   const LOCK_DURATION = 800; // Tempo de lock aumentado para 800ms
+  const ACCUMULATOR_RESET_TIME = 150; // Reset accumulator após 150ms sem scroll
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -104,6 +106,14 @@ export default function App() {
 
       // Acumular scroll até atingir threshold (criar atrito)
       scrollAccumulatorRef.current += e.deltaY;
+
+      // Reset accumulator se o utilizador parar de fazer scroll
+      if (scrollResetTimerRef.current) {
+        clearTimeout(scrollResetTimerRef.current);
+      }
+      scrollResetTimerRef.current = setTimeout(() => {
+        scrollAccumulatorRef.current = 0;
+      }, ACCUMULATOR_RESET_TIME);
 
       if (Math.abs(scrollAccumulatorRef.current) < SCROLL_THRESHOLD) {
         return; // Não mudou ainda - precisa de mais scroll
@@ -156,6 +166,11 @@ export default function App() {
   }, [activeSection]);
 
   const CurrentSection = SECTIONS[activeSection];
+
+  // Detectar cor dos controles inferiores
+  const isDarkTheme = theme === 'theme-afternoon' || theme === 'theme-night';
+  const isDarkSection = activeSection === 1 || activeSection === 3;
+  const useWhiteControls = isDarkTheme || isDarkSection;
 
   return (
     <main className={`relative h-screen w-screen overflow-hidden bg-bg ${theme}`}>
@@ -210,30 +225,45 @@ export default function App() {
       </div>
 
       {/* Progress bar */}
-      <div className="fixed bottom-12 left-1/2 -translate-x-1/2 w-64 h-[1px] bg-white/10 z-50 mix-blend-difference">
+      <div
+        className="fixed bottom-12 left-1/2 -translate-x-1/2 w-64 h-[1px] z-50 transition-colors duration-500"
+        style={{
+          backgroundColor: useWhiteControls ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+        }}
+      >
         <motion.div
           animate={{ width: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="h-full bg-white"
+          className="h-full transition-colors duration-500"
+          style={{
+            backgroundColor: useWhiteControls ? '#ffffff' : '#000000'
+          }}
         />
-        <div className="absolute -top-6 left-0 w-full flex justify-between text-[7px] uppercase tracking-[0.3em] font-bold text-white opacity-40">
+        <div
+          className="absolute -top-6 left-0 w-full flex justify-between text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
+          style={{
+            color: useWhiteControls ? '#ffffff' : '#000000',
+            opacity: 0.4
+          }}
+        >
           <span>01</span>
           <span>0{SECTION_COUNT}</span>
         </div>
       </div>
 
       {/* Nav arrows */}
-      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 text-white">
+      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 transition-colors duration-500">
         <div className="relative group/tooltip">
           <button
             onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
             disabled={activeSection === 0}
-            className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2 focus:ring-white/50"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
+              background: useWhiteControls ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
               backdropFilter: 'blur(20px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)'
+              border: useWhiteControls ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(0, 0, 0, 0.15)',
+              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)',
+              color: useWhiteControls ? '#ffffff' : '#000000'
             }}
             title={activeSection > 0 ? `Anterior: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : ''}
             aria-label={activeSection > 0 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : 'Primeira página'}
@@ -252,12 +282,13 @@ export default function App() {
           <button
             onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
             disabled={activeSection === SECTION_COUNT - 1}
-            className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2 focus:ring-white/50"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
+              background: useWhiteControls ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
               backdropFilter: 'blur(20px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)'
+              border: useWhiteControls ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(0, 0, 0, 0.15)',
+              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)',
+              color: useWhiteControls ? '#ffffff' : '#000000'
             }}
             title={activeSection < SECTION_COUNT - 1 ? `Próximo: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : ''}
             aria-label={activeSection < SECTION_COUNT - 1 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : 'Última página'}
