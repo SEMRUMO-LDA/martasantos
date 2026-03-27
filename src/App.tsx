@@ -193,14 +193,14 @@ export default function App() {
         <button
           onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
           disabled={activeSection === 0}
-          className="w-12 h-12 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
+          className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
         >
           <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         </button>
         <button
           onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
           disabled={activeSection === SECTION_COUNT - 1}
-          className="w-12 h-12 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
+          className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
         >
           <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>

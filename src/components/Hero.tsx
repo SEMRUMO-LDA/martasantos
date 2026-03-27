@@ -26,7 +26,7 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
           className="lg:col-span-5 relative"
         >
           <Magnetic strength={0.2}>
-            <div className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-lg flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group">
+            <div className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group">
               <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform" />
             </div>
           </Magnetic>
@@ -71,7 +71,7 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
               transition={{ duration: 1.2, delay: 0.5 }}
               className="flex flex-col gap-8"
             >
-              <p className="text-[12px] text-muted leading-relaxed font-light max-w-sm">
+              <p className="text-[13px] text-muted leading-relaxed font-light max-w-sm">
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
               </p>
               <Magnetic strength={0.1}>
@@ -93,7 +93,7 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
               transition={{ duration: 1.2, delay: 0.7 }}
               className="flex flex-col gap-8"
             >
-              <p className="text-[12px] text-muted leading-relaxed font-light italic opacity-60">
+              <p className="text-[13px] text-muted leading-relaxed font-light italic opacity-60">
                 "Uma coleção de estruturas minimalistas. A apresentação de espaços arquitetónicos de excelência. Explore o meu trabalho e a metodologia por trás de cada projeto, onde a luz e a matéria se fundem em harmonia."
               </p>
             </motion.div>

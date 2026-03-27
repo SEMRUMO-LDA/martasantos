@@ -5,59 +5,71 @@ import { Magnetic } from './Magnetic';
 
 export const SectionContactos = () => {
   return (
-    <section className="min-h-screen py-32 px-8 md:px-24 bg-bg text-ink relative overflow-hidden flex flex-col justify-center">
+    <section className="min-h-screen py-24 px-8 md:px-24 bg-bg text-ink relative overflow-hidden flex flex-col justify-center">
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          <div className="lg:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+
+          <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent mb-8 block">Contactos</span>
-              <h2 className="font-serif text-6xl md:text-[110px] leading-[0.85] tracking-tighter mb-20">
-                Vamos <br /> <span className="text-transparent stroke-ink stroke-1" style={{ WebkitTextStroke: '1px var(--ink-color)' }}>Reunir?</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent mb-6 block">Contactos</span>
+              <h2 className="font-serif text-5xl md:text-7xl leading-[0.9] tracking-tighter mb-16">
+                Vamos <br /> <span className="text-transparent stroke-ink stroke-1" style={{ WebkitTextStroke: '1.5px var(--ink-color)' }}>Reunir?</span>
               </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                <div className="space-y-4">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30">Email</span>
-                  <Magnetic strength={0.1}>
-                    <a href="mailto:info@martasantos.pt" className="flex items-center gap-4 text-xl md:text-3xl font-serif hover:text-accent transition-colors group">
-                      <Mail className="w-5 h-5 opacity-20 group-hover:opacity-100 transition-opacity" />
-                      info@martasantos.pt
-                    </a>
-                  </Magnetic>
-                </div>
 
-                <div className="space-y-4">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30">Telefone</span>
-                  <Magnetic strength={0.1}>
-                    <a href="tel:+351912345678" className="flex items-center gap-4 text-xl md:text-3xl font-serif hover:text-accent transition-colors group">
-                      <Phone className="w-5 h-5 opacity-20 group-hover:opacity-100 transition-opacity" />
-                      +351 912 345 678
-                    </a>
-                  </Magnetic>
-                </div>
-
-                <div className="space-y-4">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30">Localização</span>
-                  <div className="flex items-center gap-4 text-xl md:text-3xl font-serif">
-                    <MapPin className="w-5 h-5 opacity-20" />
-                    Lisboa, Portugal
+              <div className="space-y-10">
+                <div className="flex items-center gap-5">
+                  <Mail className="w-6 h-6 opacity-20 flex-shrink-0" />
+                  <div>
+                    <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Email</span>
+                    <Magnetic strength={0.1}>
+                      <a href="mailto:info@martasantos.pt" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                        info@martasantos.pt
+                      </a>
+                    </Magnetic>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30">Social</span>
-                  <div className="flex gap-6 text-xl md:text-3xl font-serif">
+                <div className="flex items-center gap-5">
+                  <Phone className="w-6 h-6 opacity-20 flex-shrink-0" />
+                  <div>
+                    <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Telefone</span>
+                    <Magnetic strength={0.1}>
+                      <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                        +351 912 345 678
+                      </a>
+                    </Magnetic>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-5">
+                  <MapPin className="w-6 h-6 opacity-20 flex-shrink-0" />
+                  <div>
+                    <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Localização</span>
+                    <div className="text-xl md:text-2xl font-serif">
+                      Lisboa, Portugal
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-ink/5">
+                  <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-4">Social</span>
+                  <div className="flex gap-6 text-lg font-serif">
                     <Magnetic strength={0.2}>
-                      <a href="#" className="hover:text-accent transition-colors">Instagram</a>
+                      <a href="#" className="hover:text-accent transition-colors flex items-center gap-2">
+                        <Instagram className="w-4 h-4 opacity-40" />
+                        Instagram
+                      </a>
                     </Magnetic>
                     <Magnetic strength={0.2}>
-                      <a href="#" className="hover:text-accent transition-colors">Linkedin</a>
+                      <a href="#" className="hover:text-accent transition-colors flex items-center gap-2">
+                        <Linkedin className="w-4 h-4 opacity-40" />
+                        Linkedin
+                      </a>
                     </Magnetic>
                   </div>
                 </div>
@@ -65,29 +77,29 @@ export const SectionContactos = () => {
             </motion.div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2 }}
-              className="aspect-square border border-ink/10 rounded-lg p-12 flex flex-col justify-between relative overflow-hidden group"
+              className="border border-ink/10 rounded-2xl p-10 md:p-14 relative overflow-hidden group bg-gradient-to-br from-bg to-accent-light/20"
             >
               <div className="relative z-10">
-                <h3 className="text-2xl font-serif mb-6">Pronto para começar o seu projeto?</h3>
-                <p className="text-xs opacity-40 leading-relaxed font-light max-w-xs mb-12">
+                <h3 className="text-3xl md:text-4xl font-serif mb-5 leading-tight">Pronto para começar o seu projeto?</h3>
+                <p className="text-sm opacity-50 leading-relaxed mb-10 max-w-md">
                   Estamos disponíveis para novos desafios e colaborações. Entre em contacto connosco para agendar uma reunião inicial.
                 </p>
                 <Magnetic strength={0.2}>
-                  <button className="px-12 py-5 bg-ink text-bg text-[11px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-white transition-all duration-500 flex items-center gap-4 group/btn">
+                  <button className="px-10 py-4 bg-ink text-bg text-[10px] uppercase tracking-[0.35em] font-bold rounded-full hover:bg-accent hover:scale-105 transition-all duration-500 flex items-center gap-3 group/btn shadow-lg hover:shadow-xl">
                     Enviar Mensagem
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </Magnetic>
               </div>
 
               {/* Decorative Circle */}
-              <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+              <div className="absolute -bottom-20 -right-20 w-56 h-56 bg-accent/5 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000" />
             </motion.div>
           </div>
         </div>
