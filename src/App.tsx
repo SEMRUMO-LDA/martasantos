@@ -46,6 +46,7 @@ export default function App() {
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState('');
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Time-based theme
   useEffect(() => {
@@ -98,7 +99,11 @@ export default function App() {
 
       if (wheelLockRef.current) return;
       wheelLockRef.current = true;
-      setTimeout(() => { wheelLockRef.current = false; }, 1200);
+      setIsNavigating(true);
+      setTimeout(() => {
+        wheelLockRef.current = false;
+        setIsNavigating(false);
+      }, 400);
 
       if (e.deltaY > 0) {
         // scroll down → next section
@@ -141,6 +146,19 @@ export default function App() {
       <div className="grain-overlay" />
       <CustomCursor />
 
+      {/* Navigation Lock Indicator */}
+      <AnimatePresence>
+        {isNavigating && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 pointer-events-none bg-black/3 z-[60]"
+          />
+        )}
+      </AnimatePresence>
+
       <Navbar
         activeSection={activeSection}
         onSectionChange={handleSectionChange}
@@ -168,7 +186,7 @@ export default function App() {
             className="absolute inset-0 overflow-y-auto custom-scrollbar"
           >
             {activeSection === 0
-              ? <Hero onCtaClick={() => handleSectionChange(1)} />
+              ? <Hero onCtaClick={() => handleSectionChange(1)} onNavigate={handleSectionChange} />
               : <CurrentSection />
             }
           </motion.div>

@@ -5,6 +5,7 @@ import { Magnetic } from './Magnetic';
 
 interface HeroProps {
   onCtaClick: () => void;
+  onNavigate: (section: number) => void;
 }
 
 const GALLERY_IMAGES = [
@@ -15,7 +16,7 @@ const GALLERY_IMAGES = [
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop"
 ];
 
-export const Hero = ({ onCtaClick }: HeroProps) => {
+export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, -100]);
@@ -42,6 +43,8 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
             <button
               onClick={handleNextImage}
               className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group z-20"
+              title="Próxima imagem"
+              aria-label="Próxima imagem da galeria"
             >
               <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform" />
             </button>
@@ -126,22 +129,23 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
       {/* Bottom Info */}
       <div className="absolute bottom-12 left-8 md:left-24 flex items-center gap-6 text-[11px] uppercase tracking-[0.3em] font-bold text-muted">
         <Magnetic strength={0.2}>
-          <span className="cursor-pointer hover:text-accent transition-colors">VAMOS REUNIR?</span>
+          <button
+            onClick={() => onNavigate(4)}
+            className="cursor-pointer hover:text-accent transition-colors"
+          >
+            VAMOS REUNIR?
+          </button>
         </Magnetic>
         <span className="opacity-20">/</span>
         <Magnetic strength={0.2}>
-          <span className="cursor-pointer hover:text-accent transition-colors">CONHECER PORTFÓLIO</span>
+          <button
+            onClick={() => onNavigate(2)}
+            className="cursor-pointer hover:text-accent transition-colors"
+          >
+            CONHECER PORTFÓLIO
+          </button>
         </Magnetic>
       </div>
-
-      {/* Vertical Line & Number with Parallax */}
-      <motion.div 
-        style={{ y: y1 }}
-        className="absolute top-1/4 right-12 flex flex-col items-center gap-6"
-      >
-        <span className="text-[12px] font-mono opacity-20 vertical-text tracking-[0.5em] font-bold">01</span>
-        <div className="w-[1px] h-32 bg-ink/10" />
-      </motion.div>
 
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-accent-light/30 -z-0 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-50" />

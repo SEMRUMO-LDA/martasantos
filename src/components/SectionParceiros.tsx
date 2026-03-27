@@ -65,12 +65,6 @@ export const SectionParceiros = () => {
           ))}
         </div>
       </div>
-
-      {/* Vertical Line & Number */}
-      <div className="absolute top-1/4 right-12 flex flex-col items-center gap-6">
-        <span className="text-[12px] font-mono opacity-20 vertical-text tracking-[0.5em] font-bold">04</span>
-        <div className="w-[1px] h-32 bg-white/10" />
-      </div>
     </section>
   );
 };
