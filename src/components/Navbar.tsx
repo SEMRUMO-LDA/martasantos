@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Magnetic } from './Magnetic';
-import logoDark from '../assets/logo-dark.png';
-import logoWhite from '../assets/logo-white.png';
+import { Logo } from './Logo';
 
 interface NavbarProps {
   activeSection: number;
@@ -54,13 +53,9 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
             <Magnetic strength={0.06}>
               <button
                 onClick={() => onSectionChange(0)}
-                className="cursor-pointer block transition-all duration-300 hover:opacity-100"
+                className="cursor-pointer block transition-all duration-300 hover:opacity-80"
               >
-                <img
-                  src={useDarkLogo ? logoDark : logoWhite}
-                  alt="Marta Santos"
-                  className="w-28 sm:w-32 md:w-36 h-auto transition-all duration-500 opacity-90"
-                />
+                <Logo useWhite={useWhiteText} />
               </button>
             </Magnetic>
           </div>
