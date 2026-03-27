@@ -47,7 +47,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
           }}
         >
           {/* Logo alinhado à esquerda do contentor (que está alinhado à grelha) */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-6">
             <Magnetic strength={0.06}>
               <button
                 onClick={() => onSectionChange(0)}
@@ -60,6 +60,8 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 />
               </button>
             </Magnetic>
+            {/* Traço vertical para equilíbrio visual */}
+            <div className="w-[1px] h-4 bg-accent/40 hidden md:block" />
           </div>
 
           {/* Nav links (desktop) */}
@@ -70,7 +72,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                   onClick={() => onSectionChange(index)}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className="relative px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-bold cursor-pointer z-10 transition-all duration-700 ease-out"
+                  className="relative px-5 py-2 text-[10px] uppercase tracking-[0.1em] font-bold cursor-pointer z-10 transition-all duration-700 ease-out"
                   style={{
                     color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
                     opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.85 : 0.5),
