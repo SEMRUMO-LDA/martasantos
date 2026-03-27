@@ -20,6 +20,9 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
   const isDarkSection = activeSection === 1 || activeSection === 3; // Processo (1) e Parceiros (3) têm bg-accent-dark
   const useWhiteText = isDarkTheme || isDarkSection;
 
+  // Logo: usar WHITE em fundos escuros, DARK em fundos claros
+  const useDarkLogo = !useWhiteText;
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Logo no canto superior esquerdo */}
@@ -32,8 +35,8 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
             transition={{ type: 'spring', stiffness: 350, damping: 22 }}
           >
             <motion.img
-              key={useWhiteText ? 'white' : 'dark'}
-              src={useWhiteText ? logoWhite : logoDark}
+              key={useDarkLogo ? 'dark' : 'white'}
+              src={useDarkLogo ? logoDark : logoWhite}
               alt="Marta Santos"
               className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto transition-all duration-500"
               style={{
