@@ -75,20 +75,10 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
           >
-            <h1 className="font-serif text-6xl md:text-[120px] leading-[0.8] tracking-tighter mb-8">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Apresentação</span>
+            <h1 className="font-serif text-5xl md:text-7xl tracking-tighter mb-8">
               Atelier <br />
-              <span
-                style={{
-                  color: 'transparent',
-                  WebkitTextStroke: '1.5px var(--ink-color)',
-                  textStroke: '1.5px var(--ink-color)',
-                  paintOrder: 'stroke fill',
-                  WebkitFontSmoothing: 'antialiased',
-                  MozOsxFontSmoothing: 'grayscale'
-                }}
-              >
-                Arquitectura
-              </span>
+              Arquitectura
             </h1>
           </motion.div>
           
