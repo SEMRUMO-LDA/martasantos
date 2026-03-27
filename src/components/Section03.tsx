@@ -9,14 +9,14 @@ export const Section03 = () => {
       title: "Casa na Comporta",
       category: "Residencial",
       year: "2024",
-      image: "https://images.unsplash.com/photo-1448630360428-65ff2c191c79?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1000&auto=format&fit=crop",
       size: "large"
     },
     {
       title: "Apartamento Chiado",
       category: "Renovação",
       year: "2023",
-      image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop",
       size: "small"
     },
     {
