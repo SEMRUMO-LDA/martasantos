@@ -52,7 +52,15 @@ export const Hero = ({ onCtaClick }: HeroProps) => {
           >
             <h1 className="font-serif text-6xl md:text-[120px] leading-[0.8] tracking-tighter mb-8">
               Atelier <br />
-              <span className="text-transparent stroke-ink stroke-1" style={{ WebkitTextStroke: '1px var(--ink-color)' }}>Arquitectura</span>
+              <span
+                className="text-transparent"
+                style={{
+                  WebkitTextStroke: '1.5px var(--ink-color)',
+                  paintOrder: 'stroke fill'
+                }}
+              >
+                Arquitectura
+              </span>
             </h1>
           </motion.div>
           

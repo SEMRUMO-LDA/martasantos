@@ -1,65 +1,97 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Menu } from 'lucide-react';
 import { Magnetic } from './Magnetic';
 
 interface NavbarProps {
   activeSection: number;
   onSectionChange: (index: number) => void;
   onMenuToggle: () => void;
+  theme: string;
 }
 
-export const Navbar = ({ activeSection, onSectionChange, onMenuToggle }: NavbarProps) => {
+export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: NavbarProps) => {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const links = ["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"];
 
-  return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-center px-8 py-6 pointer-events-none">
-      <div className="flex items-center gap-4 p-1 bg-white/60 backdrop-blur-xl rounded-xl border border-white/40 shadow-[0_4px_30px_rgba(0,0,0,0.03)] pointer-events-auto relative">
-        {links.map((link, index) => (
-          <Magnetic key={link} strength={0.1}>
-            <button 
-              onClick={() => onSectionChange(index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`relative px-6 py-2.5 flex items-center gap-2 transition-all duration-500 cursor-pointer z-10 text-[13px] font-medium tracking-tight ${activeSection === index ? 'text-black' : 'text-black/50 hover:text-black'}`}
-            >
-              <span className="relative">{link}</span>
-              
-              {/* Active Section Indicator (Subtle Line) */}
-              {activeSection === index && (
-                <motion.div 
-                  layoutId="active-line"
-                  className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-accent"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
+  // Detectar se é tema escuro (afternoon ou night) OU se está em seção com fundo escuro
+  const isDarkTheme = theme === 'theme-afternoon' || theme === 'theme-night';
+  const isDarkSection = activeSection === 1 || activeSection === 3; // Processo (1) e Parceiros (3) têm bg-accent-dark
+  const useWhiteText = isDarkTheme || isDarkSection;
 
-              {/* Hover Line in #f2ffee or Accent */}
-              {hoveredIndex === index && activeSection !== index && (
-                <motion.div 
-                  layoutId="hover-line"
-                  className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-accent/30"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </button>
-          </Magnetic>
-        ))}
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
+      {/* Centered nav links (desktop) */}
+      <div className="flex justify-center px-8 py-6">
+        <div
+          className="hidden md:flex items-center gap-1 p-2 pointer-events-auto relative rounded-full"
+          style={{
+            background: 'rgba(255, 255, 255, 0.08)',
+            backdropFilter: 'blur(40px) saturate(200%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          {links.map((link, index) => (
+            <Magnetic key={link} strength={0.05}>
+              <button
+                onClick={() => onSectionChange(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative px-6 py-2.5 text-[11px] uppercase tracking-[0.15em] font-bold cursor-pointer z-10 transition-all duration-500"
+                style={{
+                  color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                  opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.9 : 0.6),
+                  textShadow: useWhiteText ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 2px rgba(255, 255, 255, 0.5)'
+                }}
+              >
+                {activeSection === index && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-full z-[-1]"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.4)',
+                      border: '1px solid rgba(255, 255, 255, 0.5)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+                    }}
+                    transition={{ type: 'spring', bounce: 0.15, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative">{link}</span>
+              </button>
+            </Magnetic>
+          ))}
+        </div>
       </div>
-      
-      {/* Mobile Menu Toggle */}
-      <div className="md:hidden fixed top-6 right-8 pointer-events-auto">
-        <Magnetic strength={0.3}>
-          <button 
+
+      {/* Hamburger island — always visible, top-right */}
+      <div className="fixed top-6 right-8 pointer-events-auto">
+        <Magnetic strength={0.2}>
+          <button
             onClick={onMenuToggle}
-            className="w-12 h-12 bg-white/60 backdrop-blur-xl border border-white/40 rounded-lg flex flex-col items-center justify-center gap-1.5 group shadow-sm"
+            className="w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1 group"
+            style={{
+              background: 'rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(40px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.1)',
+            }}
           >
-            <div className="w-5 h-[1.5px] bg-black group-hover:w-6 transition-all" />
-            <div className="w-5 h-[1.5px] bg-black group-hover:w-4 transition-all" />
+            <span
+              className="block w-4 h-[1px] transition-all duration-500 group-hover:w-5 group-hover:bg-accent group-hover:opacity-100"
+              style={{
+                backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                opacity: 0.8
+              }}
+            />
+            <span
+              className="block w-4 h-[1px] transition-all duration-500 group-hover:w-3 group-hover:bg-accent group-hover:opacity-100"
+              style={{
+                backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                opacity: 0.8
+              }}
+            />
           </button>
         </Magnetic>
       </div>
