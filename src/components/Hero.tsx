@@ -108,12 +108,12 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(2)}
-                    className="px-10 py-4 bg-ink text-bg text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent shadow-lg hover:shadow-xl relative overflow-hidden"
+                    className="px-10 py-4 bg-accent text-bg text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent shadow-lg hover:shadow-xl relative overflow-hidden"
                   >
                     <span className="relative z-10">Ver Portfólio</span>
                     <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     <motion.div
-                      className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                      className="absolute inset-0 bg-ink translate-y-full group-hover:translate-y-0 transition-transform duration-500"
                     />
                   </button>
                 </Magnetic>
