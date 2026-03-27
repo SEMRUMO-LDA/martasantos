@@ -71,8 +71,11 @@ export default function App() {
     setActiveSection(index);
   };
 
-  // Mouse-wheel → page navigation
+  // Mouse-wheel → page navigation with friction
   const wheelLockRef = useRef(false);
+  const scrollAccumulatorRef = useRef(0);
+  const SCROLL_THRESHOLD = 100; // Precisa acumular 100px de scroll para mudar
+  const LOCK_DURATION = 800; // Tempo de lock aumentado para 800ms
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -98,14 +101,27 @@ export default function App() {
       e.preventDefault();
 
       if (wheelLockRef.current) return;
+
+      // Acumular scroll até atingir threshold (criar atrito)
+      scrollAccumulatorRef.current += e.deltaY;
+
+      if (Math.abs(scrollAccumulatorRef.current) < SCROLL_THRESHOLD) {
+        return; // Não mudou ainda - precisa de mais scroll
+      }
+
+      // Threshold atingido - mudar de página
       wheelLockRef.current = true;
       setIsNavigating(true);
+      scrollAccumulatorRef.current = 0; // Reset accumulator
+
       setTimeout(() => {
         wheelLockRef.current = false;
         setIsNavigating(false);
-      }, 400);
+      }, LOCK_DURATION);
 
-      if (e.deltaY > 0) {
+      const scrollDirection = scrollAccumulatorRef.current > 0 ? 1 : -1;
+
+      if (scrollDirection > 0) {
         // scroll down → next section
         setActiveSection(prev => {
           const next = Math.min(SECTION_COUNT - 1, prev + 1);
@@ -153,8 +169,8 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed inset-0 pointer-events-none bg-black/3 z-[60]"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 pointer-events-none bg-black/5 z-[60]"
           />
         )}
       </AnimatePresence>
