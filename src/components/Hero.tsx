@@ -28,7 +28,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
   };
 
   return (
-    <section className="h-screen pt-32 pb-16 px-8 md:px-24 flex flex-col justify-center relative bg-bg overflow-hidden">
+    <section className="h-screen pt-24 pb-16 px-8 md:px-24 flex flex-col justify-center relative bg-bg overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
         {/* Left Image with Parallax */}
