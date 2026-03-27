@@ -26,30 +26,32 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
-      {/* Logo no canto superior esquerdo */}
-      <div className="fixed top-6 left-8 md:left-12 pointer-events-auto flex items-center">
-        <Magnetic strength={0.06}>
-          <motion.button
-            onClick={() => onSectionChange(0)}
-            className="cursor-pointer block"
-            whileHover={{ scale: 1.02, opacity: 1 }}
-            transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-          >
-            <motion.img
-              key={useDarkLogo ? 'dark' : 'white'}
-              src={useDarkLogo ? logoDark : logoWhite}
-              alt="Marta Santos"
-              className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto transition-all duration-500"
-              style={{
-                opacity: 0.9,
-                filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1))'
-              }}
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 0.9, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-            />
-          </motion.button>
-        </Magnetic>
+      {/* Logo no canto superior esquerdo - alinhado verticalmente com o menu */}
+      <div className="fixed top-6 left-8 md:left-12 pointer-events-auto">
+        <div className="flex items-center h-[44px]">
+          <Magnetic strength={0.06}>
+            <motion.button
+              onClick={() => onSectionChange(0)}
+              className="cursor-pointer block"
+              whileHover={{ scale: 1.02, opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+            >
+              <motion.img
+                key={useDarkLogo ? 'dark' : 'white'}
+                src={useDarkLogo ? logoDark : logoWhite}
+                alt="Marta Santos"
+                className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto transition-all duration-500"
+                style={{
+                  opacity: 0.9,
+                  filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1))'
+                }}
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 0.9, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+              />
+            </motion.button>
+          </Magnetic>
+        </div>
       </div>
 
       {/* Centered nav links (desktop) */}
