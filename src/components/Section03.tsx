@@ -36,7 +36,7 @@ export const Section03 = () => {
   ];
 
   return (
-    <section className="min-h-screen py-24 px-8 md:px-24 bg-bg">
+    <section className="min-h-screen pt-36 pb-24 px-8 md:px-24 bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <motion.div

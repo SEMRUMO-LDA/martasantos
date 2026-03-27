@@ -5,7 +5,7 @@ import { Magnetic } from './Magnetic';
 
 export const SectionContactos = () => {
   return (
-    <section className="min-h-screen py-24 px-8 md:px-24 bg-bg text-ink relative overflow-hidden flex flex-col justify-center">
+    <section className="min-h-screen pt-36 pb-24 px-8 md:px-24 bg-bg text-ink relative overflow-hidden flex flex-col justify-center">
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
 

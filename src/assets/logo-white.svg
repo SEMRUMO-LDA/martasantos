@@ -1,0 +1,12 @@
+<svg width="420" height="100" viewBox="0 0 420 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&amp;display=swap');
+    .logo-text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  </style>
+  <text x="0" y="40" class="logo-text" font-size="38" font-weight="200" letter-spacing="10" fill="#ffffff">
+    marta santos
+  </text>
+  <text x="3" y="75" class="logo-text" font-size="20" font-weight="200" letter-spacing="18" fill="#ffffff">
+    arquitecta
+  </text>
+</svg>

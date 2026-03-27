@@ -22,7 +22,7 @@ export const Section02 = () => {
   ];
 
   return (
-    <section className="min-h-screen py-32 px-8 md:px-24 bg-accent-dark text-bg relative overflow-hidden flex flex-col justify-center">
+    <section className="min-h-screen pt-40 pb-32 px-8 md:px-24 bg-accent-dark text-bg relative overflow-hidden flex flex-col justify-center">
       {/* Background Decorative Text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.05] select-none">
         <h2 className="text-[20vw] font-serif leading-none uppercase tracking-tighter">Metodologia</h2>
