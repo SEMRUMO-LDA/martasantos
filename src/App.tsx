@@ -169,9 +169,10 @@ export default function App() {
   const CurrentSection = SECTIONS[activeSection];
 
   // Detectar cor dos controles inferiores
-  const isDarkTheme = theme === 'theme-afternoon' || theme === 'theme-night';
+  // Seções com fundo ESCURO (devem ter controles brancos): Processo (1) e Parceiros (3)
+  // Seções com fundo CLARO (devem ter controles pretos): Hero (0), Projetos (2), Contactos (4)
   const isDarkSection = activeSection === 1 || activeSection === 3;
-  const useWhiteControls = isDarkTheme || isDarkSection;
+  const useWhiteControls = isDarkSection;
 
   return (
     <main className={`relative h-screen w-screen overflow-hidden bg-bg ${theme}`}>

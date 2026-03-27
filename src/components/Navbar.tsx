@@ -15,10 +15,11 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const links = ["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"];
 
-  // Detectar se é tema escuro (afternoon ou night) OU se está em seção com fundo escuro
-  const isDarkTheme = theme === 'theme-afternoon' || theme === 'theme-night';
-  const isDarkSection = activeSection === 1 || activeSection === 3; // Processo (1) e Parceiros (3) têm bg-accent-dark
-  const useWhiteText = isDarkTheme || isDarkSection;
+  // Detectar qual cor de texto usar baseado no fundo
+  // Seções com fundo ESCURO (devem ter texto branco): Processo (1) e Parceiros (3)
+  // Seções com fundo CLARO (devem ter texto preto): Hero (0), Projetos (2), Contactos (4)
+  const isDarkSection = activeSection === 1 || activeSection === 3; // bg-accent-dark
+  const useWhiteText = isDarkSection;
 
   // Logo: usar WHITE em fundos escuros, DARK em fundos claros
   const useDarkLogo = !useWhiteText;
