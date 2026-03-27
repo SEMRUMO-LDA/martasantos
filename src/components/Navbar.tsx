@@ -47,11 +47,14 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
           }}
         >
           {/* Logo alinhado à esquerda do contentor (que está alinhado à grelha) */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
+            {/* Traço vertical mais forte para equilíbrio visual - Lado Esquerdo */}
+            <div className="w-[2px] h-5 bg-accent hidden md:block" />
+            
             <Magnetic strength={0.06}>
               <button
                 onClick={() => onSectionChange(0)}
-                className="cursor-pointer block -ml-1 transition-all duration-300 hover:opacity-100"
+                className="cursor-pointer block transition-all duration-300 hover:opacity-100"
               >
                 <img
                   src={useDarkLogo ? logoDark : logoWhite}
@@ -60,8 +63,6 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 />
               </button>
             </Magnetic>
-            {/* Traço vertical para equilíbrio visual */}
-            <div className="w-[1px] h-4 bg-accent/40 hidden md:block" />
           </div>
 
           {/* Nav links (desktop) */}
