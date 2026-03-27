@@ -119,7 +119,10 @@ export default function App() {
         return; // Não mudou ainda - precisa de mais scroll
       }
 
-      // Threshold atingido - mudar de página
+      // Threshold atingido - determinar direção ANTES de resetar
+      const scrollDirection = scrollAccumulatorRef.current > 0 ? 1 : -1;
+
+      // Mudar de página
       wheelLockRef.current = true;
       setIsNavigating(true);
       scrollAccumulatorRef.current = 0; // Reset accumulator
@@ -128,8 +131,6 @@ export default function App() {
         wheelLockRef.current = false;
         setIsNavigating(false);
       }, LOCK_DURATION);
-
-      const scrollDirection = scrollAccumulatorRef.current > 0 ? 1 : -1;
 
       if (scrollDirection > 0) {
         // scroll down → next section
