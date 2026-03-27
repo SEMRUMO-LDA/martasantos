@@ -25,7 +25,6 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
   const useDarkLogo = !useWhiteText;
 
   return (
-  return (
     <nav className="fixed top-6 left-0 w-full z-50 pointer-events-none px-8 md:px-24">
       <div className="max-w-7xl mx-auto w-full pointer-events-auto">
         <motion.div
