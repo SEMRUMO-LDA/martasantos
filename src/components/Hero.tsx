@@ -78,11 +78,13 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
             <h1 className="font-serif text-6xl md:text-[120px] leading-[0.8] tracking-tighter mb-8">
               Atelier <br />
               <span
-                className="text-transparent"
                 style={{
-                  WebkitTextStroke: '2px var(--ink-color)',
+                  color: 'transparent',
+                  WebkitTextStroke: '1.5px var(--ink-color)',
+                  textStroke: '1.5px var(--ink-color)',
                   paintOrder: 'stroke fill',
-                  textShadow: '0 0 1px var(--ink-color)'
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale'
                 }}
               >
                 Arquitectura
