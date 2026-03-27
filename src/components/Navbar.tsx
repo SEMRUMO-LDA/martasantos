@@ -48,10 +48,16 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
 
               {/* Pill Background Container */}
               <div 
-                className="px-6 py-2.5 rounded-full border transition-all duration-500 flex items-center justify-center backdrop-blur-md"
+                className="px-6 py-2.5 rounded-full transition-all duration-500 flex items-center justify-center"
                 style={{
-                  background: useWhiteText ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: useWhiteText ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                  background: useWhiteText
+                    ? 'rgba(255, 255, 255, 0.08)'
+                    : 'rgba(255, 255, 255, 0.65)',
+                  backdropFilter: 'blur(80px) saturate(200%)',
+                  WebkitBackdropFilter: 'blur(80px) saturate(200%)',
+                  border: useWhiteText
+                    ? '1px solid rgba(255, 255, 255, 0.18)'
+                    : '1px solid rgba(255, 255, 255, 0.8)',
                 }}
               >
                 <motion.img
@@ -61,7 +67,6 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                   className="w-24 sm:w-28 md:w-32 h-auto transition-all duration-500"
                   style={{
                     opacity: 0.9,
-                    filter: useDarkLogo ? 'none' : 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1))'
                   }}
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 0.9, y: 0 }}
