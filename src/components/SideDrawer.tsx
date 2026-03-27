@@ -67,7 +67,7 @@ export const SideDrawer = ({ isOpen, onClose, onSectionChange }: SideDrawerProps
 
                 <div>
                   <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4">Contactos</h3>
-                  <div className="space-y-3 text-xs opacity-70">
+                  <div className="space-y-1 text-xs opacity-70">
                     <Magnetic strength={0.1}>
                       <a href="mailto:info@martasantos.pt" className="flex items-center gap-3 hover:text-accent transition-colors">
                         <Mail className="w-4 h-4" />
