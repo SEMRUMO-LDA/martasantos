@@ -22,25 +22,25 @@ export const SectionContactos = () => {
               </h2>
 
               <div className="space-y-10">
-                <div className="flex items-start gap-5">
-                  <Mail className="w-6 h-6 opacity-20 flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <Mail className="w-6 h-6 opacity-20 flex-shrink-0" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Email</span>
                     <Magnetic strength={0.1}>
-                      <a href="mailto:info@martasantos.pt" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block leading-relaxed">
-                        info@<br />martasantos.pt
+                      <a href="mailto:info@martasantos.pt" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                        info@martasantos.pt
                       </a>
                     </Magnetic>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-5">
-                  <Phone className="w-6 h-6 opacity-20 flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-5">
+                  <Phone className="w-6 h-6 opacity-20 flex-shrink-0" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Telefone</span>
                     <Magnetic strength={0.1}>
-                      <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block leading-relaxed">
-                        +351 912<br />345 678
+                      <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                        +351 912 345 678
                       </a>
                     </Magnetic>
                   </div>
