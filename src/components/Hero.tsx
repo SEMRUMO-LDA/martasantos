@@ -96,7 +96,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(4)}
-                    className="w-fit px-10 py-4 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                    className="px-8 py-3.5 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 whitespace-nowrap"
                   >
                     <span className="relative z-10">Vamos Reunir?</span>
                     <motion.div
@@ -107,7 +107,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(2)}
-                    className="w-fit px-10 py-4 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                    className="px-8 py-3.5 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 whitespace-nowrap"
                   >
                     <span className="relative z-10">Ver Portfólio</span>
                     <motion.div
