@@ -91,9 +91,12 @@ export const SectionContactos = () => {
                   Estamos disponíveis para novos desafios e colaborações. Entre em contacto connosco para agendar uma reunião inicial.
                 </p>
                 <Magnetic strength={0.2}>
-                  <button className="px-10 py-4 bg-ink text-bg text-[10px] uppercase tracking-[0.35em] font-bold rounded-full hover:bg-accent hover:scale-105 transition-all duration-500 flex items-center gap-3 group/btn shadow-lg hover:shadow-xl">
-                    Enviar Mensagem
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  <button className="px-10 py-4 bg-accent text-bg text-[10px] uppercase tracking-[0.35em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group/btn shadow-lg hover:shadow-xl relative overflow-hidden">
+                    <span className="relative z-10">Enviar Mensagem</span>
+                    <ArrowRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
+                    <motion.div
+                      className="absolute inset-0 bg-ink translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"
+                    />
                   </button>
                 </Magnetic>
               </div>
