@@ -224,12 +224,12 @@ export default function App() {
         </AnimatePresence>
       </div>
 
-      {/* Progress Bar & Dynamic Pagination (Vertical Right) */}
-      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center justify-center transition-colors duration-500"
+      {/* Progress Bar (Vertical Right) */}
+      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center justify-center"
            style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
         
         <div
-          className="w-[1.5px] h-48 relative"
+          className="w-[1.5px] h-48 relative transition-colors duration-500"
           style={{
             backgroundColor: useWhiteControls ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
           }}
@@ -242,14 +242,6 @@ export default function App() {
               backgroundColor: useWhiteControls ? '#ffffff' : '#000000'
             }}
           />
-          {/* Dynamic Section Number */}
-          <motion.div
-            animate={{ top: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -left-10 -translate-y-1/2 text-[9px] font-bold"
-          >
-            0{activeSection + 1}
-          </motion.div>
         </div>
       </div>
 
