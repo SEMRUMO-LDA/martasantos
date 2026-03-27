@@ -39,17 +39,17 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 relative"
         >
-          <Magnetic strength={0.2}>
-            <button
-              onClick={handleNextImage}
-              className="absolute -top-12 left-0 w-12 h-12 border border-ink/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-ink hover:text-bg transition-all duration-500 group z-20"
-              title="Próxima imagem"
-              aria-label="Próxima imagem da galeria"
-            >
-              <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform" />
-            </button>
-          </Magnetic>
           <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-xl relative">
+            <Magnetic strength={0.2}>
+              <button
+                onClick={handleNextImage}
+                className="absolute top-4 left-4 w-12 h-12 border border-white/30 rounded-full flex items-center justify-center cursor-pointer bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500 group z-20"
+                title="Próxima imagem"
+                aria-label="Próxima imagem da galeria"
+              >
+                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform text-white" />
+              </button>
+            </Magnetic>
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}
