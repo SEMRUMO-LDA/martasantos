@@ -92,17 +92,30 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               <p className="text-sm text-muted leading-relaxed font-light max-w-sm">
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
               </p>
-              <Magnetic strength={0.1}>
-                <button
-                  onClick={onCtaClick}
-                  className="w-fit px-14 py-5 border border-accent text-[11px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-                >
-                  <span className="relative z-10">Processo</span>
-                  <motion.div 
-                    className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-                  />
-                </button>
-              </Magnetic>
+              <div className="flex flex-wrap gap-4">
+                <Magnetic strength={0.1}>
+                  <button
+                    onClick={() => onNavigate(4)}
+                    className="w-fit px-10 py-4 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  >
+                    <span className="relative z-10">Vamos Reunir?</span>
+                    <motion.div
+                      className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                    />
+                  </button>
+                </Magnetic>
+                <Magnetic strength={0.1}>
+                  <button
+                    onClick={() => onNavigate(2)}
+                    className="w-fit px-10 py-4 border border-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  >
+                    <span className="relative z-10">Ver Portfólio</span>
+                    <motion.div
+                      className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                    />
+                  </button>
+                </Magnetic>
+              </div>
             </motion.div>
 
             <motion.div
