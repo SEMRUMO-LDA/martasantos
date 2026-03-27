@@ -54,7 +54,7 @@ export const Section03 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xs text-muted max-w-xs leading-relaxed font-light opacity-60"
+            className="text-sm text-muted max-w-xs leading-relaxed font-light opacity-70"
           >
             Uma seleção de trabalhos que definem a nossa visão arquitetónica, onde cada linha conta uma história de luz e espaço.
           </motion.p>
@@ -74,14 +74,15 @@ export const Section03 = () => {
               }`}
               data-cursor-text="Ver Projeto"
             >
-              <div className="aspect-[4/5] md:aspect-auto md:h-[500px] overflow-hidden rounded-sm relative">
-                <motion.img 
+              <div className="aspect-[4/5] md:aspect-auto md:h-[500px] overflow-hidden rounded-sm relative shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
+                <motion.img
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
-                  src={project.image} 
-                  alt={project.title} 
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 
                 {/* Overlay on Hover */}
@@ -94,7 +95,7 @@ export const Section03 = () => {
                     <ArrowUpRight className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-60 mb-2 block">{project.year}</span>
+                    <span className="text-[11px] uppercase tracking-[0.3em] font-bold opacity-70 mb-2 block">{project.year}</span>
                     <h3 className="text-3xl md:text-5xl font-serif">{project.title}</h3>
                   </div>
                 </div>

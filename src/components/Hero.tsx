@@ -96,13 +96,13 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               transition={{ duration: 1.2, delay: 0.5 }}
               className="flex flex-col gap-8"
             >
-              <p className="text-[13px] text-muted leading-relaxed font-light max-w-sm">
+              <p className="text-sm text-muted leading-relaxed font-light max-w-sm">
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
               </p>
               <Magnetic strength={0.1}>
-                <button 
+                <button
                   onClick={onCtaClick}
-                  className="w-fit px-14 py-5 border border-accent text-[11px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group"
+                  className="w-fit px-14 py-5 border border-accent text-[11px] uppercase tracking-[0.3em] font-bold rounded-lg hover:bg-accent hover:text-bg transition-all duration-700 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
                   <span className="relative z-10">Processo</span>
                   <motion.div 
@@ -118,7 +118,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
               transition={{ duration: 1.2, delay: 0.7 }}
               className="flex flex-col gap-8"
             >
-              <p className="text-[13px] text-muted leading-relaxed font-light italic opacity-60">
+              <p className="text-sm text-muted leading-relaxed font-light italic opacity-70">
                 "Uma coleção de estruturas minimalistas. A apresentação de espaços arquitetónicos de excelência. Explore o meu trabalho e a metodologia por trás de cada projeto, onde a luz e a matéria se fundem em harmonia."
               </p>
             </motion.div>

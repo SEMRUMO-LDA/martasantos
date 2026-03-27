@@ -40,7 +40,7 @@ export const Section02 = () => {
             >
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">O Nosso Método</span>
               <h2 className="font-serif text-5xl md:text-7xl tracking-tighter mb-8">Processo <br /> Criativo</h2>
-              <p className="text-xs opacity-60 leading-relaxed font-light max-w-xs">
+              <p className="text-sm opacity-70 leading-relaxed font-light max-w-xs">
                 Acreditamos que a boa arquitetura nasce de um diálogo constante entre o sonho e a realidade técnica.
               </p>
             </motion.div>

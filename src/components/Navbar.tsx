@@ -35,7 +35,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
               key={useWhiteText ? 'white' : 'dark'}
               src={useWhiteText ? logoWhite : logoDark}
               alt="Marta Santos"
-              className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto"
+              className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto transition-all duration-500"
               style={{
                 opacity: 0.9,
                 filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1))'

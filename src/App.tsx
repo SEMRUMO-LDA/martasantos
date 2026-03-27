@@ -207,21 +207,55 @@ export default function App() {
       </div>
 
       {/* Nav arrows */}
-      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 mix-blend-difference text-white">
-        <button
-          onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
-          disabled={activeSection === 0}
-          className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
-        >
-          <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        </button>
-        <button
-          onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
-          disabled={activeSection === SECTION_COUNT - 1}
-          className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group"
-        >
-          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </button>
+      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 text-white">
+        <div className="relative group/tooltip">
+          <button
+            onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
+            disabled={activeSection === 0}
+            className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2 focus:ring-white/50"
+            style={{
+              background: 'rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)'
+            }}
+            title={activeSection > 0 ? `Anterior: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : ''}
+            aria-label={activeSection > 0 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : 'Primeira página'}
+          >
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          </button>
+          {activeSection > 0 && (
+            <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
+              <div className="bg-ink text-bg px-3 py-1.5 rounded text-[10px] uppercase tracking-wider font-bold whitespace-nowrap">
+                {["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="relative group/tooltip">
+          <button
+            onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
+            disabled={activeSection === SECTION_COUNT - 1}
+            className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2 focus:ring-white/50"
+            style={{
+              background: 'rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 4px 16px -4px rgba(0, 0, 0, 0.15)'
+            }}
+            title={activeSection < SECTION_COUNT - 1 ? `Próximo: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : ''}
+            aria-label={activeSection < SECTION_COUNT - 1 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : 'Última página'}
+          >
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+          {activeSection < SECTION_COUNT - 1 && (
+            <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
+              <div className="bg-ink text-bg px-3 py-1.5 rounded text-[10px] uppercase tracking-wider font-bold whitespace-nowrap">
+                {["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );
