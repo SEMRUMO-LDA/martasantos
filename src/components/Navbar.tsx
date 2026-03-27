@@ -56,11 +56,13 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
         <div
           className="hidden md:flex items-center gap-0.5 px-1.5 py-1.5 pointer-events-auto relative rounded-full"
           style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            background: useWhiteText ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
             backdropFilter: 'blur(60px) saturate(180%)',
             WebkitBackdropFilter: 'blur(60px) saturate(180%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            boxShadow: '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+            border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.12)',
+            boxShadow: useWhiteText
+              ? '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)'
+              : '0 4px 24px -4px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)',
           }}
         >
           {links.map((link, index) => (
@@ -81,9 +83,11 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                     layoutId="active-pill"
                     className="absolute inset-0 rounded-full z-[-1]"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.25)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      boxShadow: '0 2px 6px rgba(0, 0, 0, 0.06), inset 0 1px 0px rgba(255, 255, 255, 0.4)',
+                      background: useWhiteText ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.15)',
+                      border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid rgba(0, 0, 0, 0.2)',
+                      boxShadow: useWhiteText
+                        ? '0 2px 6px rgba(0, 0, 0, 0.06), inset 0 1px 0px rgba(255, 255, 255, 0.4)'
+                        : '0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0px rgba(255, 255, 255, 0.6)',
                     }}
                     transition={{ type: 'spring', bounce: 0.12, duration: 0.5 }}
                   />
@@ -102,11 +106,13 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
             onClick={onMenuToggle}
             className="w-11 h-11 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.06)',
+              background: useWhiteText ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
               backdropFilter: 'blur(60px) saturate(180%)',
               WebkitBackdropFilter: 'blur(60px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              boxShadow: '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+              border: useWhiteText ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.12)',
+              boxShadow: useWhiteText
+                ? '0 4px 24px -4px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1)'
+                : '0 4px 24px -4px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)',
             }}
           >
             <span
