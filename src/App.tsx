@@ -225,9 +225,8 @@ export default function App() {
       </div>
 
       {/* Progress Bar & Dynamic Pagination (Vertical Right) */}
-      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-4 transition-colors duration-500"
+      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center justify-center transition-colors duration-500"
            style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
-        <span className="text-[7px] uppercase tracking-[0.3em] font-bold opacity-40">01</span>
         
         <div
           className="w-[1.5px] h-48 relative"
@@ -252,8 +251,6 @@ export default function App() {
             0{activeSection + 1}
           </motion.div>
         </div>
-
-        <span className="text-[7px] uppercase tracking-[0.3em] font-bold opacity-40">0{SECTION_COUNT}</span>
       </div>
 
       {/* Canto Inferior Direito: Info Rodapé (Desktop) */}
