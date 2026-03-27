@@ -40,16 +40,7 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
           className="lg:col-span-5 relative"
         >
           <div className="h-[400px] md:h-[600px] overflow-hidden rounded-sm shadow-xl relative">
-            <Magnetic strength={0.2}>
-              <button
-                onClick={handleNextImage}
-                className="absolute top-4 left-4 w-12 h-12 border border-white/30 rounded-full flex items-center justify-center cursor-pointer bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500 group z-20"
-                title="Próxima imagem"
-                aria-label="Próxima imagem da galeria"
-              >
-                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:scale-110 transition-transform text-white" />
-              </button>
-            </Magnetic>
+            {/* Galeria de imagens */}
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}
@@ -96,24 +87,24 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(4)}
-                    className="px-10 py-4 bg-accent text-bg text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent shadow-lg hover:shadow-xl relative overflow-hidden"
+                    className="px-16 py-4 border border-accent/60 text-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden whitespace-nowrap"
                   >
                     <span className="relative z-10">Vamos Reunir?</span>
                     <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     <motion.div
-                      className="absolute inset-0 bg-ink translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                      className="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
                     />
                   </button>
                 </Magnetic>
                 <Magnetic strength={0.1}>
                   <button
                     onClick={() => onNavigate(2)}
-                    className="px-10 py-4 bg-accent text-bg text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent shadow-lg hover:shadow-xl relative overflow-hidden"
+                    className="px-16 py-4 border border-accent/60 text-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden whitespace-nowrap"
                   >
                     <span className="relative z-10">Ver Portfólio</span>
                     <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     <motion.div
-                      className="absolute inset-0 bg-ink translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                      className="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
                     />
                   </button>
                 </Magnetic>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Section02 } from './components/Section02';
@@ -75,8 +74,8 @@ export default function App() {
   const wheelLockRef = useRef(false);
   const scrollAccumulatorRef = useRef(0);
   const scrollResetTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const SCROLL_THRESHOLD = 100; // Precisa acumular 100px de scroll para mudar
-  const LOCK_DURATION = 800; // Tempo de lock aumentado para 800ms
+  const SCROLL_THRESHOLD = 180; // Precisa acumular 180px de scroll para mudar
+  const LOCK_DURATION = 1000; // Tempo de lock aumentado para 1000ms
   const ACCUMULATOR_RESET_TIME = 150; // Reset accumulator após 150ms sem scroll
 
   useEffect(() => {
@@ -176,7 +175,6 @@ export default function App() {
 
   return (
     <main className={`relative h-screen w-screen overflow-hidden bg-bg ${theme}`}>
-      <div className="grain-overlay" />
       <CustomCursor />
 
       {/* Navigation Lock Indicator */}
@@ -226,10 +224,13 @@ export default function App() {
         </AnimatePresence>
       </div>
 
-      {/* Progress bar - Vertical no canto direito */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 flex items-center gap-6">
+      {/* Progress Bar & Dynamic Pagination (Vertical Right) */}
+      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-4 transition-colors duration-500"
+           style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
+        <span className="text-[7px] uppercase tracking-[0.3em] font-bold opacity-40">01</span>
+        
         <div
-          className="w-[1px] h-48 transition-colors duration-500 relative"
+          className="w-[1.5px] h-48 relative"
           style={{
             backgroundColor: useWhiteControls ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
           }}
@@ -237,101 +238,41 @@ export default function App() {
           <motion.div
             animate={{ height: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full transition-colors duration-500 absolute bottom-0"
+            className="w-full transition-colors duration-500 absolute top-0"
             style={{
               backgroundColor: useWhiteControls ? '#ffffff' : '#000000'
             }}
           />
-          <div
-            className="absolute -left-8 top-0 flex flex-col gap-2 text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
-            style={{
-              color: useWhiteControls ? '#ffffff' : '#000000',
-              opacity: 0.4,
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)'
-            }}
+          {/* Dynamic Section Number */}
+          <motion.div
+            animate={{ top: `${((activeSection + 1) / SECTION_COUNT) * 100}%` }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute -left-10 -translate-y-1/2 text-[9px] font-bold"
           >
-            <span>01</span>
-          </div>
-          <div
-            className="absolute -left-8 bottom-0 flex flex-col gap-2 text-[7px] uppercase tracking-[0.3em] font-bold transition-colors duration-500"
-            style={{
-              color: useWhiteControls ? '#ffffff' : '#000000',
-              opacity: 0.4,
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)'
-            }}
-          >
-            <span>0{SECTION_COUNT}</span>
-          </div>
+            0{activeSection + 1}
+          </motion.div>
         </div>
+
+        <span className="text-[7px] uppercase tracking-[0.3em] font-bold opacity-40">0{SECTION_COUNT}</span>
       </div>
 
-      {/* Nav arrows */}
-      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 transition-colors duration-700">
-        <div className="relative group/tooltip">
-          <button
-            onClick={() => handleSectionChange(Math.max(0, activeSection - 1))}
-            disabled={activeSection === 0}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-out disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
-            style={{
-              background: useWhiteControls
-                ? 'rgba(255, 255, 255, 0.08)'
-                : 'rgba(255, 255, 255, 0.65)',
-              backdropFilter: 'blur(80px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(80px) saturate(200%)',
-              border: useWhiteControls
-                ? '1px solid rgba(255, 255, 255, 0.18)'
-                : '1px solid rgba(255, 255, 255, 0.8)',
-              boxShadow: useWhiteControls
-                ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
-                : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
-              color: useWhiteControls ? '#ffffff' : '#000000'
-            }}
-            title={activeSection > 0 ? `Anterior: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : ''}
-            aria-label={activeSection > 0 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}` : 'Primeira página'}
-          >
-            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-          </button>
-          {activeSection > 0 && (
-            <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
-              <div className="bg-ink text-bg px-3 py-1.5 rounded text-[10px] uppercase tracking-wider font-bold whitespace-nowrap">
-                {["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection - 1]}
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="relative group/tooltip">
-          <button
-            onClick={() => handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1))}
-            disabled={activeSection === SECTION_COUNT - 1}
-            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-out disabled:opacity-5 disabled:cursor-not-allowed group focus:outline-none focus:ring-2"
-            style={{
-              background: useWhiteControls
-                ? 'rgba(255, 255, 255, 0.08)'
-                : 'rgba(255, 255, 255, 0.65)',
-              backdropFilter: 'blur(80px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(80px) saturate(200%)',
-              border: useWhiteControls
-                ? '1px solid rgba(255, 255, 255, 0.18)'
-                : '1px solid rgba(255, 255, 255, 0.8)',
-              boxShadow: useWhiteControls
-                ? '0 8px 32px -8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.15)'
-                : '0 8px 32px -8px rgba(31, 38, 135, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
-              color: useWhiteControls ? '#ffffff' : '#000000'
-            }}
-            title={activeSection < SECTION_COUNT - 1 ? `Próximo: ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : ''}
-            aria-label={activeSection < SECTION_COUNT - 1 ? `Navegar para ${["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}` : 'Última página'}
-          >
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
-          {activeSection < SECTION_COUNT - 1 && (
-            <div className="absolute bottom-full mb-2 right-0 opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none">
-              <div className="bg-ink text-bg px-3 py-1.5 rounded text-[10px] uppercase tracking-wider font-bold whitespace-nowrap">
-                {["Atelier", "Processo", "Projetos", "Parceiros", "Contactos"][activeSection + 1]}
-              </div>
-            </div>
-          )}
+      {/* Canto Inferior Direito: Info Rodapé (Desktop) */}
+      <div className="fixed bottom-12 right-12 z-40 hidden md:flex flex-col items-end gap-3 transition-colors duration-500"
+           style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
+        
+        {/* Links do Rodapé */}
+        <div className="flex items-center gap-4 text-[7px] md:text-[8px] uppercase tracking-[0.2em] font-bold">
+          <a href="#" className="relative group hover:opacity-100 transition-opacity whitespace-nowrap py-1">
+            <span className="opacity-40 group-hover:opacity-100 transition-opacity">Política de Privacidade</span>
+            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+          </a>
+          <span className="opacity-10">|</span>
+          <a href="#" className="relative group hover:opacity-100 transition-opacity whitespace-nowrap py-1">
+            <span className="opacity-40 group-hover:opacity-100 transition-opacity">Livro de Reclamações Online</span>
+            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+          </a>
+          <span className="opacity-10">|</span>
+          <span className="opacity-40 whitespace-nowrap">© 2026 Marta Santos</span>
         </div>
       </div>
     </main>

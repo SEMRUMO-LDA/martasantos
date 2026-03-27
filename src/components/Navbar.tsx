@@ -54,8 +54,8 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
         </div>
       </div>
 
-      {/* Centered nav links (desktop) */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 pointer-events-none">
+      {/* Nav links (desktop) - moved to right */}
+      <div className="fixed top-6 right-8 md:right-12 pointer-events-none">
         <div
           className="hidden md:flex items-center gap-4 px-4 h-11 pointer-events-auto relative rounded-full transition-all duration-700 ease-out"
           style={{
@@ -88,7 +88,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
                 {activeSection === index && (
                   <motion.span
                     layoutId="active-underline"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-accent"
+                    className="absolute bottom-[6px] left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-accent"
                     transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
                   />
                 )}
@@ -99,8 +99,8 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
         </div>
       </div>
 
-      {/* Hamburger island — always visible, top-right */}
-      <div className="fixed top-6 right-8 pointer-events-auto">
+      {/* Hamburger island — hidden on desktop, top-right */}
+      <div className="fixed top-6 right-8 pointer-events-auto md:hidden">
         <Magnetic strength={0.15}>
           <button
             onClick={onMenuToggle}

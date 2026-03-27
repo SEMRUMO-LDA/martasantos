@@ -60,7 +60,7 @@ export const Section03 = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -68,10 +68,7 @@ export const Section03 = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, delay: index * 0.1 }}
-              className={`group relative cursor-pointer ${
-                project.size === 'large' ? 'md:col-span-8' : 
-                project.size === 'medium' ? 'md:col-span-6' : 'md:col-span-4'
-              }`}
+              className="group relative cursor-pointer"
               data-cursor-text="Ver Projeto"
             >
               <div className="aspect-[4/5] md:aspect-auto md:h-[500px] overflow-hidden rounded-sm relative shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
