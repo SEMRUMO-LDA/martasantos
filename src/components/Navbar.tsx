@@ -28,7 +28,7 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Logo no canto superior esquerdo - alinhado verticalmente com o menu */}
       <div className="fixed top-6 left-8 md:left-12 pointer-events-auto">
-        <div className="flex items-center h-[44px]">
+        <div className="flex items-center h-[38px]">
           <Magnetic strength={0.06}>
             <motion.button
               onClick={() => onSectionChange(0)}
@@ -87,20 +87,12 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
               >
                 {activeSection === index && (
                   <motion.span
-                    layoutId="active-pill"
-                    className="absolute inset-0 rounded-full z-[-1]"
+                    layoutId="active-underline"
+                    className="absolute bottom-0 left-0 right-0 h-[2px]"
                     style={{
-                      background: useWhiteText
-                        ? 'rgba(255, 255, 255, 0.3)'
-                        : 'rgba(255, 255, 255, 0.85)',
-                      border: useWhiteText
-                        ? '1px solid rgba(255, 255, 255, 0.4)'
-                        : '1px solid rgba(255, 255, 255, 0.95)',
-                      boxShadow: useWhiteText
-                        ? '0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.5)'
-                        : '0 4px 12px rgba(31, 38, 135, 0.12), inset 0 1px 1px rgba(255, 255, 255, 1)',
+                      backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
                     }}
-                    transition={{ type: 'spring', bounce: 0.12, duration: 0.5 }}
+                    transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
                   />
                 )}
                 <span className="relative">{link}</span>
