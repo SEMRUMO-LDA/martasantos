@@ -21,23 +21,19 @@ const SECTION_COUNT = SECTIONS.length;
 
 // Slide variants — direction: 1 = forward (right→left), -1 = backward (left→right)
 const variants = {
-  enter: (direction: number) => ({
-    x: direction >= 0 ? '100%' : '-100%',
+  enter: {
     opacity: 0,
-  }),
+  },
   center: {
-    x: 0,
     opacity: 1,
   },
-  exit: (direction: number) => ({
-    x: direction >= 0 ? '-100%' : '100%',
+  exit: {
     opacity: 0,
-  }),
+  },
 };
 
 const transition = {
-  x: { type: 'spring' as const, stiffness: 280, damping: 32, mass: 0.9 },
-  opacity: { duration: 0.25, ease: 'easeInOut' },
+  opacity: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
 };
 
 export default function App() {
