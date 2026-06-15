@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Magnetic } from './Magnetic';
 import { Logo } from './Logo';
 
 interface NavbarProps {
@@ -46,70 +45,65 @@ export const Navbar = ({ activeSection, onSectionChange, onMenuToggle, theme }: 
           }}
         >
           {/* Logo alinhado à esquerda do contentor (que está alinhado à grelha) */}
-          <div className="flex items-center gap-5">
-            {/* Traço vertical mais forte para equilíbrio visual - Lado Esquerdo */}
-            <div className="w-[2px] h-5 bg-accent hidden md:block" />
+          <div className="flex items-center gap-2">
+            {/* Quadrado verde para equilíbrio visual */}
+            <div className="w-3 h-3 hidden md:block" style={{ backgroundColor: '#75b368' }} />
             
-            <Magnetic strength={0.06}>
-              <button
-                onClick={() => onSectionChange(0)}
-                className="cursor-pointer block transition-all duration-300 hover:opacity-80"
-              >
-                <Logo useWhite={useWhiteText} />
-              </button>
-            </Magnetic>
+            <button
+              onClick={() => onSectionChange(0)}
+              className="cursor-pointer block transition-all duration-300 hover:opacity-80"
+            >
+              <Logo useWhite={useWhiteText} />
+            </button>
           </div>
 
           {/* Nav links (desktop) */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((link, index) => (
-              <Magnetic key={link} strength={0.05}>
-                <button
-                  onClick={() => onSectionChange(index)}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className="relative px-5 py-2 text-[10px] uppercase tracking-[0.1em] font-bold cursor-pointer z-10 transition-all duration-700 ease-out"
-                  style={{
-                    color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                    opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.85 : 0.5),
-                  }}
-                >
-                  <span className="relative">{link}</span>
-                  {activeSection === index && (
-                    <motion.span
-                      layoutId="active-underline"
-                      className="absolute bottom-[6px] left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-accent"
-                      transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-                    />
-                  )}
-                </button>
-              </Magnetic>
+              <button
+                key={link}
+                onClick={() => onSectionChange(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative px-5 py-2 text-[10px] uppercase tracking-[0.1em] font-bold cursor-pointer z-10 transition-all duration-700 ease-out"
+                style={{
+                  color: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                  opacity: activeSection === index ? 1 : (hoveredIndex === index ? 0.85 : 0.5),
+                }}
+              >
+                <span className="relative">{link}</span>
+                {activeSection === index && (
+                  <motion.span
+                    layoutId="active-underline"
+                    className="absolute bottom-[6px] left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-accent"
+                    transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+                  />
+                )}
+              </button>
             ))}
           </div>
 
           {/* Hamburger island — hidden on desktop */}
           <div className="md:hidden flex items-center pr-2">
-            <Magnetic strength={0.15}>
-              <button
-                onClick={onMenuToggle}
-                className="w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-700 ease-out"
-              >
-                <span
-                  className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-5 group-hover:bg-accent"
-                  style={{
-                    backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                    opacity: 0.7
-                  }}
-                />
-                <span
-                  className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-3 group-hover:bg-accent"
-                  style={{
-                    backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
-                    opacity: 0.7
-                  }}
-                />
-              </button>
-            </Magnetic>
+            <button
+              onClick={onMenuToggle}
+              className="w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1 group transition-all duration-700 ease-out"
+            >
+              <span
+                className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-5 group-hover:bg-accent"
+                style={{
+                  backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                  opacity: 0.7
+                }}
+              />
+              <span
+                className="block w-4 h-[1px] transition-all duration-700 ease-out group-hover:w-3 group-hover:bg-accent"
+                style={{
+                  backgroundColor: useWhiteText ? '#ffffff' : 'var(--ink-color)',
+                  opacity: 0.7
+                }}
+              />
+            </button>
           </div>
         </motion.div>
       </div>

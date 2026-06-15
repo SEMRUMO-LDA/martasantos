@@ -46,7 +46,7 @@ export const Section03 = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Portfólio</span>
-            <h2 className="font-serif text-5xl md:text-7xl tracking-tighter">Projetos <br /> Selecionados</h2>
+            <h2 className="font-serif text-[46px] md:text-[70px] tracking-tighter">Projetos</h2>
           </motion.div>
           
           <motion.p 

@@ -17,7 +17,7 @@ export const SectionContactos = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-6 block">Contactos</span>
-              <h2 className="font-serif text-5xl md:text-7xl leading-[0.9] tracking-tighter mb-16">
+              <h2 className="font-serif text-[46px] md:text-[70px] leading-[0.9] tracking-tighter mb-16">
                 Vamos <br /> Reunir?
               </h2>
 

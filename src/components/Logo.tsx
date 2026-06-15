@@ -6,16 +6,18 @@ interface LogoProps {
 
 export const Logo = ({ useWhite }: LogoProps) => {
   return (
-    <div 
-      className={`font-serif text-[18px] md:text-[22px] leading-none select-none transition-colors duration-500 lowercase ${
+    <div
+      className={`flex items-baseline gap-2 font-serif leading-none select-none transition-colors duration-500 lowercase ${
         useWhite ? 'text-white' : 'text-ink'
       }`}
-      style={{
-        fontWeight: 500, // Passando para Medium
-        letterSpacing: '-0.02em' // Tracking diminuído para precisão arquitetónica
-      }}
+      style={{ letterSpacing: '-0.02em' }}
     >
-      marta santos
+      <span className="text-[18px] md:text-[22px]" style={{ fontWeight: 300 }}>
+        marta santos
+      </span>
+      <span className="text-[8px] md:text-[9px] uppercase tracking-[0.25em]" style={{ fontWeight: 400 }}>
+        arquitecta
+      </span>
     </div>
   );
 };

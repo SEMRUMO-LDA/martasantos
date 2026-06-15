@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { Magnetic } from './Magnetic';
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -67,9 +66,8 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
             transition={{ duration: 1.2, delay: 0.2 }}
           >
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Apresentação</span>
-            <h1 className="font-serif text-5xl md:text-7xl tracking-tighter mb-8">
-              Atelier <br />
-              Arquitectura
+            <h1 className="font-serif text-[46px] md:text-[70px] tracking-tighter mb-8">
+              Atelier
             </h1>
           </motion.div>
 
@@ -84,30 +82,16 @@ export const Hero = ({ onCtaClick, onNavigate }: HeroProps) => {
                 Marta Santos Arquitecta é um atelier focado na criação de espaços que equilibram funcionalidade, estética e sustentabilidade. A nossa abordagem é guiada pela simplicidade e pela atenção ao detalhe, transformando cada projeto numa experiência única e intemporal.
               </p>
               <div className="flex items-center gap-4">
-                <Magnetic strength={0.1}>
-                  <button
-                    onClick={() => onNavigate(4)}
-                    className="px-16 py-4 border border-accent/60 text-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden whitespace-nowrap"
-                  >
-                    <span className="relative z-10">Vamos Reunir?</span>
-                    <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                    <motion.div
-                      className="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-                    />
-                  </button>
-                </Magnetic>
-                <Magnetic strength={0.1}>
-                  <button
-                    onClick={() => onNavigate(2)}
-                    className="px-16 py-4 border border-accent/60 text-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden whitespace-nowrap"
-                  >
-                    <span className="relative z-10">Ver Portfólio</span>
-                    <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                    <motion.div
-                      className="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-                    />
-                  </button>
-                </Magnetic>
+                <button
+                  onClick={() => onNavigate(2)}
+                  className="px-16 py-4 border border-accent/60 text-accent text-[10px] uppercase tracking-[0.3em] font-bold rounded-full transition-all duration-500 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent relative overflow-hidden whitespace-nowrap"
+                >
+                  <span className="relative z-10">Ver Portfólio</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                  <motion.div
+                    className="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                  />
+                </button>
               </div>
             </motion.div>
 

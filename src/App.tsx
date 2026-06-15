@@ -7,7 +7,7 @@ import { Section03 } from './components/Section03';
 import { SectionParceiros } from './components/SectionParceiros';
 import { SectionContactos } from './components/SectionContactos';
 import { SideDrawer } from './components/SideDrawer';
-import { CustomCursor } from './components/CustomCursor';
+
 
 const SECTIONS = [
   (props: any) => <Hero {...props} />,
@@ -171,8 +171,6 @@ export default function App() {
 
   return (
     <main className={`relative h-screen w-screen overflow-hidden bg-bg ${theme}`}>
-      <CustomCursor />
-
       {/* Navigation Lock Indicator */}
       <AnimatePresence>
         {isNavigating && (

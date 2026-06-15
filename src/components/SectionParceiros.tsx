@@ -14,11 +14,6 @@ export const SectionParceiros = () => {
 
   return (
     <section className="min-h-screen bg-accent-dark text-bg px-8 md:px-24 pt-36 pb-32 relative overflow-hidden flex flex-col">
-      {/* Background Decorative Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
-        <h2 className="text-[20vw] font-serif leading-none uppercase tracking-tighter">Colaboração</h2>
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <motion.div
@@ -28,7 +23,7 @@ export const SectionParceiros = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Parceiros</span>
-            <h2 className="font-serif text-5xl md:text-7xl tracking-tighter">Rede de <br /> Excelência</h2>
+            <h2 className="font-serif text-[46px] md:text-[70px] tracking-tighter">Rede de <br /> Excelência</h2>
           </motion.div>
           
           <motion.p 
