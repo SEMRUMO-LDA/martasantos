@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
-import { Magnetic } from './Magnetic';
 
 interface SideDrawerProps {
   isOpen: boolean;
@@ -34,14 +33,12 @@ export const SideDrawer = ({ isOpen, onClose, onSectionChange }: SideDrawerProps
             className="fixed top-0 right-0 h-full w-full max-w-[400px] bg-accent-dark/80 backdrop-blur-xl text-bg z-[70] p-12 flex flex-col shadow-2xl border-l border-white/10"
           >
             <div className="flex justify-end mb-8">
-              <Magnetic strength={0.4}>
-                <button 
-                  onClick={onClose}
-                  className="p-3 hover:bg-white/10 rounded-lg transition-colors group"
-                >
-                  <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-500" />
-                </button>
-              </Magnetic>
+              <button 
+                onClick={onClose}
+                className="p-3 hover:bg-white/10 rounded-lg transition-colors group"
+              >
+                <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-500" />
+              </button>
             </div>
 
             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
@@ -68,34 +65,26 @@ export const SideDrawer = ({ isOpen, onClose, onSectionChange }: SideDrawerProps
                 <div>
                   <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4">Contactos</h3>
                   <div className="space-y-1 text-xs opacity-70">
-                    <Magnetic strength={0.1}>
-                      <a href="mailto:info@martasantos.pt" className="flex items-center gap-3 hover:text-accent transition-colors">
-                        <Mail className="w-4 h-4" />
-                        info@martasantos.pt
-                      </a>
-                    </Magnetic>
-                    <Magnetic strength={0.1}>
-                      <a href="tel:+351912345678" className="flex items-center gap-3 hover:text-accent transition-colors">
-                        <Phone className="w-4 h-4" />
-                        +351 912 345 678
-                      </a>
-                    </Magnetic>
+                    <a href="mailto:info@martasantos.pt" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail className="w-4 h-4" />
+                      info@martasantos.pt
+                    </a>
+                    <a href="tel:+351912345678" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Phone className="w-4 h-4" />
+                      +351 912 345 678
+                    </a>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4">Siga-nos</h3>
                   <div className="flex gap-6">
-                    <Magnetic strength={0.3}>
-                      <a href="#" className="opacity-50 hover:opacity-100 hover:text-accent transition-all">
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                    </Magnetic>
-                    <Magnetic strength={0.3}>
-                      <a href="#" className="opacity-50 hover:opacity-100 hover:text-accent transition-all">
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                    </Magnetic>
+                    <a href="#" className="opacity-50 hover:opacity-100 hover:text-accent transition-all">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="opacity-50 hover:opacity-100 hover:text-accent transition-all">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
                   </div>
                 </div>
               </div>

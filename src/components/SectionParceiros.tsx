@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Magnetic } from './Magnetic';
 
 export const SectionParceiros = () => {
   const partners = [
@@ -31,7 +30,7 @@ export const SectionParceiros = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xs text-bg/60 max-w-xs leading-relaxed font-light"
+            className="text-sm text-bg/60 max-w-xs leading-relaxed font-light"
           >
             Trabalhamos com os melhores especialistas para garantir que cada detalhe do seu projeto é executado com precisão.
           </motion.p>
@@ -47,15 +46,13 @@ export const SectionParceiros = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="group"
             >
-              <Magnetic strength={0.1}>
-                <div className="flex items-center gap-6 cursor-pointer">
-                  <span className="text-[10px] font-mono opacity-20 group-hover:opacity-100 group-hover:text-accent transition-all duration-500">0{index + 1}</span>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase tracking-[0.3em] font-bold group-hover:text-accent transition-colors duration-500">{partner}</span>
-                    <div className="w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-700 mt-2" />
-                  </div>
+              <div className="flex items-center gap-6 cursor-pointer">
+                <span className="text-[10px] font-mono opacity-20 group-hover:opacity-100 group-hover:text-accent transition-all duration-500">0{index + 1}</span>
+                <div className="flex flex-col">
+                  <span className="text-[11px] uppercase tracking-[0.3em] font-bold group-hover:text-accent transition-colors duration-500">{partner}</span>
+                  <div className="w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-700 mt-2" />
                 </div>
-              </Magnetic>
+              </div>
             </motion.div>
           ))}
         </div>

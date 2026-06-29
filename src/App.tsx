@@ -7,6 +7,7 @@ import { Section03 } from './components/Section03';
 import { SectionParceiros } from './components/SectionParceiros';
 import { SectionContactos } from './components/SectionContactos';
 import { SideDrawer } from './components/SideDrawer';
+import { ProjectDetail } from './components/ProjectDetail';
 
 
 const SECTIONS = [
@@ -42,6 +43,12 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState('');
   const [isNavigating, setIsNavigating] = useState(false);
+  const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
+
+  const selectedProjectSlugRef = useRef<string | null>(null);
+  useEffect(() => {
+    selectedProjectSlugRef.current = selectedProjectSlug;
+  }, [selectedProjectSlug]);
 
   // Time-based theme
   useEffect(() => {
@@ -79,11 +86,30 @@ export default function App() {
       const target = e.target as HTMLElement;
       const scrollableParent = target.closest('.overflow-y-auto');
 
+      if (selectedProjectSlugRef.current) {
+        if (scrollableParent) {
+          const canScrollDown =
+            scrollableParent.scrollHeight > scrollableParent.clientHeight &&
+            scrollableParent.scrollTop + scrollableParent.clientHeight <
+            scrollableParent.scrollHeight - 1;
+          const canScrollUp = scrollableParent.scrollTop > 1;
+
+          if (
+            (e.deltaY > 0 && canScrollDown) ||
+            (e.deltaY < 0 && canScrollUp)
+          ) {
+            return; // let the inner scroll happen
+          }
+        }
+        e.preventDefault();
+        return;
+      }
+
       if (scrollableParent) {
         const canScrollDown =
           scrollableParent.scrollHeight > scrollableParent.clientHeight &&
           scrollableParent.scrollTop + scrollableParent.clientHeight <
-            scrollableParent.scrollHeight - 1;
+          scrollableParent.scrollHeight - 1;
         const canScrollUp = scrollableParent.scrollTop > 1;
 
         if (
@@ -151,6 +177,7 @@ export default function App() {
   // Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      if (selectedProjectSlugRef.current) return;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         handleSectionChange(Math.min(SECTION_COUNT - 1, activeSection + 1));
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -210,18 +237,21 @@ export default function App() {
             transition={transition}
             className="absolute inset-0 overflow-y-auto custom-scrollbar"
           >
-            {activeSection === 0
-              ? <Hero onCtaClick={() => handleSectionChange(1)} onNavigate={handleSectionChange} />
-              : <CurrentSection />
-            }
+            {activeSection === 0 ? (
+              <Hero onCtaClick={() => handleSectionChange(1)} onNavigate={handleSectionChange} />
+            ) : activeSection === 2 ? (
+              <Section03 onProjectClick={(slug) => setSelectedProjectSlug(slug)} />
+            ) : (
+              <CurrentSection />
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Progress Bar (Vertical Right) */}
       <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center justify-center"
-           style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
-        
+        style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
+
         <div
           className="w-[1.5px] h-48 relative transition-colors duration-500"
           style={{
@@ -241,8 +271,8 @@ export default function App() {
 
       {/* Canto Inferior Direito: Info Rodapé (Desktop) */}
       <div className="fixed bottom-12 right-12 z-40 hidden md:flex flex-col items-end gap-3 transition-colors duration-500"
-           style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
-        
+        style={{ color: useWhiteControls ? '#ffffff' : '#000000' }}>
+
         {/* Links do Rodapé */}
         <div className="flex items-center gap-4 text-[7px] md:text-[8px] uppercase tracking-[0.2em] font-bold">
           <a href="#" className="relative group hover:opacity-100 transition-opacity whitespace-nowrap py-1">
@@ -258,6 +288,16 @@ export default function App() {
           <span className="opacity-40 whitespace-nowrap">© 2026 Marta Santos</span>
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProjectSlug && (
+          <ProjectDetail
+            slug={selectedProjectSlug}
+            onClose={() => setSelectedProjectSlug(null)}
+            onSelectProject={(slug) => setSelectedProjectSlug(slug)}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

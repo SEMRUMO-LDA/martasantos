@@ -39,7 +39,7 @@ export const Section02 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xs text-bg/60 max-w-xs leading-relaxed font-light"
+            className="text-sm text-bg/60 max-w-xs leading-relaxed font-light"
           >
             Acreditamos que a boa arquitetura nasce de um diálogo constante entre o sonho e a realidade técnica.
           </motion.p>
@@ -60,7 +60,7 @@ export const Section02 = () => {
                 <div className="flex flex-col">
                   <span className="text-[11px] uppercase tracking-[0.3em] font-bold group-hover:text-accent transition-colors duration-500">{step.title}</span>
                   <div className="w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-700 mt-2" />
-                  <p className="text-xs text-bg/40 leading-relaxed font-light mt-4 group-hover:text-bg/80 transition-colors duration-500">
+                  <p className="text-sm text-bg/40 leading-relaxed font-light mt-4 group-hover:text-bg/80 transition-colors duration-500">
                     {step.description}
                   </p>
                 </div>
