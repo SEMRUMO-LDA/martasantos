@@ -3,12 +3,12 @@ import { motion } from 'motion/react';
 
 export const SectionParceiros = () => {
   const partners = [
-    "Structural Design Co.",
-    "Urban Materials",
-    "Eco Build Systems",
-    "Modern Glass Works",
-    "Precision Engineering",
-    "Aesthetic Interiors"
+    "Empresa 1",
+    "Empresa 2",
+    "Empresa 3",
+    "Empresa 4",
+    "Empresa 5",
+    "Empresa 6"
   ];
 
   return (

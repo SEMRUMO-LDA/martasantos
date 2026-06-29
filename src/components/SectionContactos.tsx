@@ -35,8 +35,8 @@ export const SectionContactos = () => {
                   <Phone className="w-6 h-6 opacity-20 flex-shrink-0" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Telefone</span>
-                    <a href="tel:+351912345678" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
-                      +351 912 345 678
+                    <a href="tel:+351917845868" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                      +351 917 845 868
                     </a>
                   </div>
                 </div>
@@ -45,9 +45,9 @@ export const SectionContactos = () => {
                   <MapPin className="w-6 h-6 opacity-20 flex-shrink-0" />
                   <div>
                     <span className="text-[9px] uppercase tracking-[0.4em] font-bold opacity-30 block mb-2">Localização</span>
-                    <div className="text-xl md:text-2xl font-serif">
-                      Lisboa, Portugal
-                    </div>
+                    <a href="https://share.google/uNPJqEw9muH0QkDmI" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-serif hover:text-accent transition-colors block">
+                      Albufeira, Algarve
+                    </a>
                   </div>
                 </div>
 
