@@ -15,9 +15,9 @@ export const SectionContactos = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-6 block">Contactos</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-6 block">Vamos Reunir?</span>
               <h2 className="font-serif text-[46px] md:text-[70px] leading-[0.9] tracking-tighter mb-16">
-                Vamos <br /> Reunir?
+                Contactos
               </h2>
 
               <div className="space-y-10">

@@ -21,8 +21,8 @@ export const SectionParceiros = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Parceiros</span>
-            <h2 className="font-serif text-[46px] md:text-[70px] tracking-tighter">Rede de <br /> Excelência</h2>
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent mb-4 block">Rede de Excelência</span>
+            <h2 className="font-serif text-[46px] md:text-[70px] tracking-tighter">Parceiros</h2>
           </motion.div>
           
           <motion.p 
